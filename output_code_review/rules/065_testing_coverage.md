@@ -4,89 +4,96 @@
 
 |     | Code Review Rule | Frequency Score |
 | --- | --- | --- |
-| 1 | [Use code coverage tools like coverage.py](#rule-1-use-code-coverage-tools-like-coverage-py) | 90.0 |
-| 2 | [Test all public methods](#rule-2-test-all-public-methods) | 85.0 |
-| 3 | [Test all private methods](#rule-3-test-all-private-methods) | 80.0 |
-| 4 | [Achieve at least 80% code coverage](#rule-4-achieve-at-least-80-code-coverage) | 75.0 |
-| 5 | [Write unit tests for bug fixes](#rule-5-write-unit-tests-for-bug-fixes) | 70.0 |
-| 6 | [Implement integration tests](#rule-6-implement-integration-tests) | 70.0 |
-| 7 | [Use mocks for external dependencies](#rule-7-use-mocks-for-external-dependencies) | 65.0 |
-| 8 | [Test edge cases and error conditions](#rule-8-test-edge-cases-and-error-conditions) | 60.0 |
-| 9 | [Mock external services for integration tests](#rule-9-mock-external-services-for-integration-tests) | 60.0 |
-| 10 | [Automate tests with CI/CD](#rule-10-automate-tests-with-ci-cd) | 55.0 |
-| 11 | [Use parameterized tests for different inputs](#rule-11-use-parameterized-tests-for-different-inputs) | 50.0 |
-| 12 | [Test asynchronous code with asyncio](#rule-12-test-asynchronous-code-with-asyncio) | 50.0 |
-| 13 | [Ensure tests are deterministic](#rule-13-ensure-tests-are-deterministic) | 45.0 |
-| 14 | [Review and update tests regularly](#rule-14-review-and-update-tests-regularly) | 40.0 |
-| 15 | [Include performance tests in test suite](#rule-15-include-performance-tests-in-test-suite) | 40.0 |
-| 16 | [Measure and improve test performance](#rule-16-measure-and-improve-test-performance) | 35.0 |
-| 17 | [Use property based testing for complex logic](#rule-17-use-property-based-testing-for-complex-logic) | 30.0 |
-| 18 | [Test for security vulnerabilities](#rule-18-test-for-security-vulnerabilities) | 20.0 |
-| 19 | [Include end to end tests for critical paths](#rule-19-include-end-to-end-tests-for-critical-paths) | 10.0 |
-| 20 | [Use mutation testing to improve test suite](#rule-20-use-mutation-testing-to-improve-test-suite) | 5.0 |
+| 1 | [Use code coverage tools like coverage.py](#rule-1) | 90.0 |
+| 2 | [Test all public methods](#rule-2) | 85.0 |
+| 3 | [Test all private methods](#rule-3) | 80.0 |
+| 4 | [Achieve at least 80% code coverage](#rule-4) | 75.0 |
+| 5 | [Write unit tests for bug fixes](#rule-5) | 70.0 |
+| 6 | [Implement integration tests](#rule-6) | 70.0 |
+| 7 | [Use mocks for external dependencies](#rule-7) | 65.0 |
+| 8 | [Test edge cases and error conditions](#rule-8) | 60.0 |
+| 9 | [Mock external services for integration tests](#rule-9) | 60.0 |
+| 10 | [Automate tests with CI/CD](#rule-10) | 55.0 |
+| 11 | [Use parameterized tests for different inputs](#rule-11) | 50.0 |
+| 12 | [Test asynchronous code with asyncio](#rule-12) | 50.0 |
+| 13 | [Ensure tests are deterministic](#rule-13) | 45.0 |
+| 14 | [Review and update tests regularly](#rule-14) | 40.0 |
+| 15 | [Include performance tests in test suite](#rule-15) | 40.0 |
+| 16 | [Measure and improve test performance](#rule-16) | 35.0 |
+| 17 | [Use property based testing for complex logic](#rule-17) | 30.0 |
+| 18 | [Test for security vulnerabilities](#rule-18) | 20.0 |
+| 19 | [Include end to end tests for critical paths](#rule-19) | 10.0 |
+| 20 | [Use mutation testing to improve test suite](#rule-20) | 5.0 |
 ---
- --- 
-# Rule 1. Use code coverage tools like coverage.py
-
+---
+# Rule 1
+# Use code coverage tools like coverage.py
+---
 | Frequent score for this rule: 90.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing coverage involves using code coverage tools like coverage.py to measure the percentage of code covered by automated tests. It helps ensure that all parts of the codebase are tested, leading to more reliable and robust software.
+---
+### Explanation:
+>Testing coverage refers to the percentage of code that is executed by automated tests. Code coverage tools like coverage.py help measure this metric by identifying which parts of the code are tested and which are not.
 
-## Why do we need this rule?
->Using testing coverage ensures that all parts of the codebase are tested, reducing the risk of undetected bugs and improving overall code quality and reliability.
+### Why use this rule:
+>Code coverage tools are essential for ensuring that all parts of the codebase are tested, leading to higher quality software with fewer bugs. They help identify untested code, reducing the risk of undetected issues in production.
 
-## If not apply this rule, what will happen?
-| In this negative example, code coverage tools are not used, leading to a lack of testing coverage and uncertainty about the completeness of testing. This can result in undetected bugs and lower code quality.
+### Without this rule:
+>This code snippet shows a negative example where code coverage is not measured or tested. Without code coverage tools, it is difficult to ensure that all parts of the code are adequately tested, leading to potential bugs and issues in the software.
 ```python
-# Negative Python code example
-# Not using code coverage tools
-# Lack of testing coverage
-# No measurement of code coverage
-# Uncertain testing completeness
+# Negative Python code example not using code coverage
+# No code coverage measurement or testing
 ```
-
-## If apply this rule?
-| In this positive example, code coverage tools like coverage.py are used to measure the testing coverage of the codebase, ensuring that all parts of the code are tested.
+### Good use of this rule:
+>This code snippet demonstrates how to use the coverage.py library to measure code coverage in Python tests. It starts the coverage measurement, runs the tests, stops the coverage, saves the results, and generates a report showing the coverage percentage.
 ```python
-# Positive Python code example
-# Using code coverage tools to measure testing coverage
+# Positive Python code example using code coverage
 import coverage
 
 cov = coverage.Coverage()
 cov.start()
-# Run tests
-# Stop coverage measurement
+# Run your tests here
+
 cov.stop()
 cov.save()
 cov.report()
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check testing coverage in a Python project, you can use code coverage tools like coverage.py. These tools analyze the codebase and provide insights into which parts of the code are covered by tests and which are not. By using code coverage tools, you can ensure that your tests are comprehensive and that the codebase is well-tested. Additionally, code coverage tools can help identify areas of the code that need more testing.
+### Automated tools can be used to fix the code for applying this rule:
+One automated tool that can be used to fix the code based on testing coverage is autopep8.
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+To implement autofix using autopep8 in a Python project, follow these steps:
+1. Install autopep8 using pip: `pip install autopep8`
+2. Run autopep8 on your Python files to automatically fix formatting issues: `autopep8 --in-place --aggressive --aggressive <your_python_file.py>`
+3. Check the changes made by autopep8 and ensure that the code still functions correctly.
+4. You can integrate autopep8 into your CI/CD pipeline to automatically format code during the build process.
  --- 
  --- 
- --- 
-# Rule 2. Test all public methods
-
+---
+# Rule 2
+# Test all public methods
+---
 | Frequent score for this rule: 85.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing Coverage requires testing all public methods to ensure that they are functioning as expected. This involves creating test cases for each public method to validate their behavior and functionality.
+---
+### Explanation:
+>Testing Coverage requires testing all public methods to ensure that the codebase is thoroughly tested and all functionalities are working as expected.
 
-## Why do we need this rule?
->Testing all public methods helps in identifying bugs and errors early in the development process, ensuring better code quality and reducing the risk of unexpected issues in production.
+### Why use this rule:
+>Testing all public methods helps in identifying potential bugs and ensuring the overall quality and reliability of the code. It also provides better code maintainability and reduces the risk of unexpected issues in production.
 
-## If not apply this rule, what will happen?
-| In the negative Python code examples, the test functions for 'addition' and 'subtraction' methods have incorrect expected outputs, leading to failed tests and inaccurate validation of method functionality.
+### Without this rule:
+>In the positive examples, we have test functions for all public methods like 'addition' and 'subtraction' with correct assertions to ensure comprehensive testing coverage.
 ```python
 def test_addition_function():
     assert addition(2, 3) == 6
 
-def test_subtraction_function():
-    assert subtraction(5, 3) == 3
+def test_multiplication_function():
+    assert multiplication(4, 5) == 20
 ```
-
-## If apply this rule?
-| In the positive Python code examples, we have created test functions for the 'addition' and 'subtraction' public methods. These test functions validate the expected output of the methods, ensuring their correctness and functionality.
+### Good use of this rule:
+>In the positive examples, we have test functions for public methods like 'addition' and 'subtraction' to ensure they return the correct results.
 ```python
 def test_addition_function():
     assert addition(2, 3) == 5
@@ -94,32 +101,43 @@ def test_addition_function():
 def test_subtraction_function():
     assert subtraction(5, 3) == 2
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check testing coverage and ensure all public methods in the application project are tested, you can use code coverage tools like pytest-cov or coverage.py. These tools can generate reports showing which parts of the code are covered by tests and which are not. By analyzing these reports, you can identify public methods that are not tested and improve the testing coverage of your project.
+### Automated tools can be used to fix the code for applying this rule:
+1. pytest-cov
+2. coverage.py
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install pytest-cov or coverage.py
+2. Run the code coverage tool to generate a report
+3. Analyze the report to identify public methods that are not tested
+4. Write test cases for the identified public methods
+5. Rerun the code coverage tool to ensure all public methods are now tested
  --- 
  --- 
- --- 
-# Rule 3. Test all private methods
-
+---
+# Rule 3
+# Test all private methods
+---
 | Frequent score for this rule: 80.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing Coverage rule suggests testing all private methods in a codebase to ensure comprehensive test coverage. This includes testing methods that are not directly accessible from outside the class.
+---
+### Explanation:
+>Testing Coverage requires testing all private methods to ensure comprehensive testing of the codebase. This includes testing methods that are not directly accessible from outside the class.
 
-## Why do we need this rule?
->Testing private methods ensures that the internal logic of a class is thoroughly tested, leading to more robust and reliable code. It helps in identifying and fixing potential bugs or issues in the implementation of private methods, improving the overall quality of the codebase.
+### Why use this rule:
+>Testing private methods ensures that the internal logic of the class is thoroughly tested, leading to more robust and reliable code. It helps in identifying and fixing potential bugs or issues in the private methods that could impact the overall functionality of the class.
 
-## If not apply this rule, what will happen?
-| In this example, the private method __private_method is not tested in unit tests, leading to a lack of coverage for the internal logic of the class. This can result in undetected bugs or issues in the private method implementation.
+### Without this rule:
+>In this example, the private method __private_method() is not tested, leading to incomplete testing coverage. This can result in undetected bugs or issues in the private method.
 ```python
 class MyClass:
     def __private_method(self):
         # implementation
 
-# Private method not tested in unit tests
+# No test case for private method
 ```
-
-## If apply this rule?
-| In this example, the private method __private_method is tested within the public_method of the class MyClass. This ensures that the internal logic of the private method is tested along with the public methods.
+### Good use of this rule:
+>In this example, the private method __private_method() is tested within the class MyClass to ensure its functionality. This comprehensive testing approach improves code quality and reliability.
 ```python
 class MyClass:
     def __private_method(self):
@@ -127,330 +145,481 @@ class MyClass:
 
     def public_method(self):
         self.__private_method()
-        # test private method here
 
-# Test private method in unit tests
+# Test case to test private method
+# assert statements to check expected behavior
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check testing coverage and ensure all private methods in the application project are tested, you can use code analysis tools that support code coverage analysis. These tools can identify which private methods are not covered by tests and provide insights on how to improve testing coverage for private methods.
+### Automated tools can be used to fix the code for applying this rule:
+1. Coverage.py
+2. Pytest-cov
+3. Codecov
+4. SonarQube
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install the chosen automated tool for Python auto fix.
+2. Configure the tool to analyze the codebase and identify private methods that are not covered by tests.
+3. Generate a report highlighting the uncovered private methods.
+4. Write test cases for the uncovered private methods.
+5. Re-run the tool to ensure all private methods are now covered by tests.
  --- 
  --- 
- --- 
-# Rule 4. Achieve at least 80% code coverage
-
+---
+# Rule 4
+# Achieve at least 80% code coverage
+---
 | Frequent score for this rule: 75.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing Coverage aims to achieve at least 80% code coverage, ensuring that a significant portion of the codebase is tested. This involves running tests to determine the percentage of code executed during testing. It helps identify untested code and potential bugs, improving code quality and reliability.
+---
+### Explanation:
+>Testing coverage aims to achieve at least 80% code coverage, ensuring that a significant portion of the codebase is tested. This helps in identifying bugs early, improving code quality, and increasing confidence in the software's reliability and stability.
 
-## Why do we need this rule?
->Maintaining a high code coverage percentage helps catch bugs early in the development cycle, reduces the risk of regressions, and increases confidence in the codebase's stability and correctness.
+### Why use this rule:
+>Maintaining a high code coverage percentage ensures that most parts of the code are tested, reducing the likelihood of undetected bugs and improving overall software quality and reliability.
 
-## If not apply this rule, what will happen?
-| In the negative Python code examples, the 'multiply' function lacks corresponding test cases, resulting in low code coverage. Failing to test all code paths can lead to undetected bugs and decrease the overall quality and reliability of the codebase.
+### Without this rule:
+>In the negative example, the 'multiply' function is not tested, leading to lower code coverage and potential bugs going undetected.
 ```python
-# Negative Python code examples
+# Negative Python code example
 # Not achieving 80% code coverage
 
 def multiply(a, b):
     return a * b
-
-# Test function
-# Missing test cases for the 'multiply' function
-# This leads to low code coverage
 ```
-
-## If apply this rule?
-| In the positive Python code examples, we use pytest to write test cases for a simple 'add' function. By writing comprehensive test cases, we aim to achieve at least 80% code coverage, ensuring that most of the code paths are tested and validated.
+### Good use of this rule:
+>In the positive example, unit tests are written to cover functions like 'add' and 'subtract', ensuring that these functions are tested and the code coverage is increased.
 ```python
-# Positive Python code examples
-# Using pytest to achieve 80% code coverage
-import pytest
+# Positive Python code example
+# Achieving 80% code coverage
+import unittest
 
-def add(a, b):
-    return a + b
+class TestMathFunctions(unittest.TestCase):
+    def test_addition(self):
+        self.assertEqual(add(3, 5), 8)
 
-# Test function
-@pytest.mark.parametrize('a, b, expected', [(1, 2, 3), (4, 5, 9)])
-def test_add(a, b, expected):
-    assert add(a, b) == expected
+    def test_subtraction(self):
+        self.assertEqual(subtract(10, 5), 5)
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check and fix Testing Coverage to achieve at least 80% code coverage in a Python application project, you can use code coverage tools like coverage.py or pytest-cov. These tools can help you measure the code coverage of your tests and identify areas that need improvement.
+### Automated tools can be used to fix the code for applying this rule:
+1. coverage.py
+2. pytest-cov
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install coverage.py
+2. Run coverage.py to measure code coverage
+3. Identify areas with low coverage
+4. Write additional tests to increase coverage
+5. Repeat steps 2-4 until desired coverage is achieved
  --- 
  --- 
- --- 
-# Rule 5. Write unit tests for bug fixes
-
+---
+# Rule 5
+# Write unit tests for bug fixes
+---
 | Frequent score for this rule: 70.0 | [^Top](#testing-coverage) 
 
-## Explanation
+---
+### Explanation:
 >Testing Coverage involves writing unit tests for bug fixes to ensure that the fixed code behaves as expected and does not introduce new issues. Unit tests help in identifying and preventing regressions in the codebase, improving code quality and maintainability.
 
-## Why do we need this rule?
->Writing unit tests for bug fixes ensures that the fixed code works correctly and does not break existing functionality. It helps in catching bugs early, reducing the risk of introducing new issues, and maintaining code reliability over time.
+### Why use this rule:
+>Writing unit tests for bug fixes ensures that the fixed code works correctly and does not break existing functionality. It helps in catching regressions early, improving code reliability, and facilitating easier debugging and maintenance in the long run.
 
-## If not apply this rule, what will happen?
-| In this negative example, the bug fix is implemented without writing any unit tests. This approach can lead to uncertainty about the correctness of the fix and may introduce new bugs or regressions.
+### Without this rule:
+>In this negative example, the bug fix is implemented without writing any unit tests. This approach lacks validation and testing, making it difficult to ensure the correctness of the fixed code.
 ```python
 # Without unit tests for bug fixes
-bug_fix_function(input)
+bug_fix_function(input) # No validation or testing of the fixed code
 ```
-
-## If apply this rule?
-| This positive example demonstrates writing a unit test specifically for a bug fix. The test ensures that the bug fix function returns the expected output for a given input, helping to validate the correctness of the fix.
+### Good use of this rule:
+>This positive example demonstrates writing a unit test for a bug fix function to verify that it returns the expected output for a given input.
 ```python
 def test_bug_fix():
     # Test case for bug fix
     assert bug_fix_function(input) == expected_output
 ```
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and write unit tests for bug fixes in a Python application project, you can use tools like pytest, coverage.py, and pytest-cov. These tools can help you measure the code coverage of your unit tests and ensure that bug fixes are properly tested.
+### Automated tools can be used to fix the code for applying this rule:
+pytest, coverage.py, pytest-cov
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+Choose pytest as the automated tool for Python auto fix. Follow the steps below to implement autofix with pytest:
 
- --- 
- --- 
- --- 
-# Rule 6. Implement integration tests
+1. Install pytest and coverage.py:
+   ```
+   pip install pytest coverage
+   ```
 
+2. Create a test file for your bug fix (e.g., test_bug_fix.py) and write unit tests using pytest syntax.
+
+3. Run pytest with coverage to measure code coverage:
+   ```
+   pytest --cov=your_project_directory
+   ```
+
+4. Analyze the coverage report to identify areas with low coverage and add more unit tests to improve coverage.
+
+5. Optionally, you can use pytest-cov to generate coverage reports in different formats for better visualization.
+
+By following these steps, you can automatically check testing coverage and write unit tests for bug fixes in your Python application project using pytest.
+ --- 
+ --- 
+---
+# Rule 6
+# Implement integration tests
+---
 | Frequent score for this rule: 70.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing Coverage is the measure of how much of the code is tested by automated tests. Implementing integration tests ensures that different parts of the system work together correctly. It involves testing the interactions between components to identify issues early in the development process.
+---
+### Explanation:
+>Testing coverage refers to the percentage of code that is covered by automated tests. Implementing integration tests ensures that different parts of the system work together correctly. It involves testing the interactions between components to identify any issues that may arise when they are integrated.
 
-## Why do we need this rule?
->Using integration tests improves the overall quality of the software by detecting integration issues early, reducing the risk of bugs in production, and increasing confidence in the system's functionality.
+### Why use this rule:
+>Using integration tests helps in detecting bugs and issues that may occur when different components of the system interact. It ensures the overall functionality and reliability of the system.
 
-## If not apply this rule, what will happen?
-| In this negative example, only individual components are tested without considering their interactions, leading to potential integration issues being overlooked.
+### Without this rule:
+>In this negative example, only individual component functionality is tested, neglecting the integration aspect. This can lead to undetected issues when components interact.
 ```python
 def test_functionality():
-    # Test individual components without integration
-    assert individual_function() == expected_result
+    # Test individual component functionality only
+    assert component_function() == expected_result
 ```
-
-## If apply this rule?
-| By implementing integration tests like the one shown, you can verify that different parts of the system work together as expected, ensuring the overall functionality and reliability of the software.
+### Good use of this rule:
+>Integration tests like the one shown ensure that different parts of the system work together as expected, identifying any integration issues early in the development process.
 ```python
 def test_integration_functionality():
     # Test the integration of multiple components
     assert integration_function() == expected_result
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and implement integration tests in an application project written in Python, you can use tools like pytest-cov to measure code coverage and pytest to write integration tests. These tools can help you ensure that your code is well-tested and has sufficient coverage.
+### Automated tools can be used to fix the code for applying this rule:
+1. pytest-cov
+2. pytest
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install pytest-cov and pytest in your Python environment.
+2. Write integration tests using pytest to cover different scenarios in your application.
+3. Use pytest-cov to measure the code coverage of your tests.
+4. Analyze the code coverage report to identify areas with low coverage.
+5. Improve test coverage by writing additional tests for the low coverage areas.
+6. Run the tests and coverage checks regularly to ensure code quality.
  --- 
  --- 
- --- 
-# Rule 7. Use mocks for external dependencies
-
+---
+# Rule 7
+# Use mocks for external dependencies
+---
 | Frequent score for this rule: 65.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing Coverage involves using mocks for external dependencies to isolate the code being tested from external services or resources. Mocks simulate the behavior of external dependencies, allowing for more controlled and predictable testing environments.
+---
+### Explanation:
+>Testing Coverage involves ensuring that all parts of the code are tested. Using mocks for external dependencies allows for isolated testing of a specific unit without relying on external services or resources. Mocks simulate the behavior of external dependencies, making tests more reliable and efficient.
 
-## Why do we need this rule?
->Using mocks for external dependencies ensures that tests focus on the specific functionality of the code being tested, rather than on the behavior of external services. This improves test reliability, speed, and maintainability by reducing dependencies on external resources.
+### Why use this rule:
+>Using mocks for external dependencies improves test reliability, speed, and isolation. It prevents tests from failing due to changes in external services and allows for faster test execution by removing the need for network calls or database interactions.
 
-## If not apply this rule, what will happen?
-| This code example directly calls an external API, making the test dependent on the external service. This can lead to unreliable tests, slow test execution, and difficulties in debugging failures.
+### Without this rule:
+>This code example directly calls the 'function' from 'module' without using a mock. It relies on the actual external dependency, making the test dependent on external services and potentially causing test failures due to changes in the external service.
 ```python
-# Without using mocks for external dependencies
-
-# Directly calling an external API
-response = requests.get('https://api.example.com/data')
-
-# Testing the function with the actual API call
-assert my_function(response) == expected_result
+def test_function_without_mock():
+    result = module.function()
+    assert result == 'expected_response'
 ```
-
-## If apply this rule?
-| By using mocks for external dependencies, the test is isolated from the actual external API call, making it more reliable and faster. The mock object allows for controlled responses, ensuring predictable test outcomes.
+### Good use of this rule:
+>In this example, the '@patch' decorator is used to mock the 'function' from 'module'. The test function sets the return value of the mock function and asserts that the actual result matches the expected mocked response.
 ```python
-# Using unittest.mock to create a mock object
-from unittest.mock import Mock
-
-# Mocking an external API call
-mock_api = Mock()
-mock_api.get_data.return_value = {'key': 'value'}
-
-# Using the mock object in the test
-assert my_function(mock_api) == expected_result
+@patch('module.function')
+def test_function_with_mock(mock_function):
+    mock_function.return_value = 'mocked_response'
+    result = module.function()
+    assert result == 'mocked_response'
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and use mocks for external dependencies in a Python application project, you can utilize tools like pytest-cov for code coverage and pytest-mock for mocking external dependencies. These tools can help in ensuring that your tests cover a significant portion of your codebase and that external dependencies are properly mocked for isolated testing.
+### Automated tools can be used to fix the code for applying this rule:
+pytest-cov, pytest-mock
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+Choose pytest-cov as the automated tool for Python auto fix. Follow the steps below:
+1. Install pytest-cov using pip:
+   ```
+   pip install pytest-cov
+   ```
+2. Update your test scripts to use pytest-cov for code coverage:
+   ```
+   pytest --cov=your_module tests/
+   ```
+3. Analyze the code coverage report generated by pytest-cov to identify areas with low coverage.
+4. Use pytest-mock to mock external dependencies in your tests:
+   ```
+   from unittest.mock import MagicMock
+   import pytest
+   
+   @pytest.fixture
+   def mock_external_dependency():
+       return MagicMock()
+   
+   def test_your_function(mock_external_dependency):
+       # Mock the external dependency
+       mock_external_dependency.some_method.return_value = 'mocked_value'
+       
+       # Test your function with the mocked dependency
+       assert your_function_using_external_dependency() == 'expected_result'
+   ```
  --- 
  --- 
- --- 
-# Rule 8. Test edge cases and error conditions
-
+---
+# Rule 8
+# Test edge cases and error conditions
+---
 | Frequent score for this rule: 60.0 | [^Top](#testing-coverage) 
 
-## Explanation
+---
+### Explanation:
 >Testing coverage involves testing edge cases and error conditions to ensure that the code behaves as expected in all scenarios.
 
-## Why do we need this rule?
+### Why use this rule:
 >Testing edge cases and error conditions helps uncover potential bugs and vulnerabilities that may not be apparent during regular testing. It ensures robustness and reliability of the codebase, leading to higher quality software products.
 
-## If not apply this rule, what will happen?
-| The negative Python code example does not test edge cases or error conditions, only testing the function with a single input value without considering other scenarios.
+### Without this rule:
+>In this negative example, the code does not test the edge case where the divisor is 0, which can lead to a ZeroDivisionError during runtime if not handled properly.
 ```python
-def test_function():
-    assert function_to_test(5) == expected_output
-```
+# Negative Python code example
+# Not testing edge case for a function
 
-## If apply this rule?
-| The positive Python code examples demonstrate testing edge cases and error conditions by checking the behavior of the function for different input values, including zero, negative numbers, large numbers, and None.
+def divide(a, b):
+    return a / b
+
+# No test for edge case where b is 0
+result = divide(10, 0)
+```
+### Good use of this rule:
+>In this positive example, we are testing the edge case where the divisor is 0 to ensure that the function handles this error condition correctly.
 ```python
-def test_edge_cases():
-    assert function_to_test(0) == expected_output
-    assert function_to_test(-1) == expected_output
-    assert function_to_test(100) == expected_output
-    assert function_to_test(None) == expected_output
+# Positive Python code example
+# Testing edge case for a function
+
+def divide(a, b):
+    if b == 0:
+        raise ZeroDivisionError('Cannot divide by zero')
+    return a / b
+
+# Test edge case where b is 0
+try:
+    result = divide(10, 0)
+except ZeroDivisionError as e:
+    print(e)
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and test edge cases and error conditions in a Python project, you can use tools like pytest, coverage.py, and pylint. These tools can help analyze the codebase, identify areas with low test coverage, and suggest improvements to test edge cases and error conditions.
+### Automated tools can be used to fix the code for applying this rule:
+pytest, coverage.py, pylint
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Use pytest to write test cases for edge cases and error conditions.
+2. Use coverage.py to measure the test coverage of the codebase.
+3. Use pylint to identify potential issues in the code related to testing.
+4. Choose one automated tool for Python auto fix, such as autoflake, and follow the steps below to implement autofix with this tool.
  --- 
  --- 
- --- 
-# Rule 9. Mock external services for integration tests
-
+---
+# Rule 9
+# Mock external services for integration tests
+---
 | Frequent score for this rule: 60.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing coverage involves mocking external services for integration tests to ensure that the tests are isolated and reliable. Mocking external services allows for controlled testing environments and prevents dependencies on external services that may be unreliable or slow.
+---
+### Explanation:
+>Testing coverage involves mocking external services for integration tests to ensure that the tests are isolated and reliable. Mocking external services allows for controlled testing environments and prevents dependencies on external systems, improving test stability and speed.
 
-## Why do we need this rule?
->Using this rule ensures that integration tests are consistent, reliable, and independent of external factors. It helps in speeding up test execution, reducing flakiness, and improving overall test stability and maintainability.
+### Why use this rule:
+>Mocking external services for integration tests helps in creating reliable and repeatable tests by isolating the code under test from external dependencies. It also allows for faster test execution and reduces the risk of test failures due to external service unavailability or changes.
 
-## If not apply this rule, what will happen?
-| In this example, the test_integration_without_mocked_service function does not mock the external service, leading to dependencies on the actual service. This can result in unreliable tests that are affected by the external service's availability and performance.
+### Without this rule:
+>In this example, the integration test directly calls the external service without mocking it. This can lead to test failures due to external service unavailability or changes, making the test unreliable and dependent on external factors.
 ```python
 def test_integration_without_mocked_service():
-    # Test logic without mocking external service
+    # Test code that directly calls external service
     pass
 ```
-
-## If apply this rule?
-| By mocking external services for integration tests, like in the test_integration_with_mocked_service function, we ensure that the tests are isolated and controlled. This approach improves test reliability, speed, and independence from external factors, leading to more stable and maintainable tests.
+### Good use of this rule:
+>In this example, the requests.get function is patched with a mocked function to simulate the behavior of an external service. This ensures that the integration test is isolated and does not rely on the actual external service, making it more reliable and repeatable.
 ```python
 @patch('requests.get', side_effect=mocked_requests_get)
 def test_integration_with_mocked_service():
-    # Test logic using mocked external service
+    # Test code that interacts with external service
     pass
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and mock external services for integration tests in a Python application project, you can use tools like pytest, coverage.py, and pytest-mock. These tools can help you measure code coverage, write integration tests, and mock external services for testing purposes.
+### Automated tools can be used to fix the code for applying this rule:
+1. pytest
+2. coverage.py
+3. pytest-mock
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install pytest, coverage.py, and pytest-mock using pip.
+2. Write integration tests using pytest and mock external services using pytest-mock.
+3. Measure code coverage using coverage.py.
+4. Use pytest fixtures to set up and tear down external service mocks.
+5. Run the tests and coverage checks to ensure proper testing coverage and mock usage.
  --- 
  --- 
- --- 
-# Rule 10. Automate tests with CI/CD
-
+---
+# Rule 10
+# Automate tests with CI/CD
+---
 | Frequent score for this rule: 55.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing coverage involves measuring the extent to which the source code of a program is tested by automated tests. Automating tests with Continuous Integration/Continuous Deployment (CI/CD) ensures that tests are run automatically whenever code changes are made, providing immediate feedback on the code's quality. This practice helps identify bugs early, improves code reliability, and accelerates the development process.
+---
+### Explanation:
+>Testing Coverage involves measuring the extent to which the source code of a program is executed by tests. Automating tests with Continuous Integration/Continuous Deployment (CI/CD) ensures that tests are run automatically whenever code changes are made, providing immediate feedback on code quality and preventing regressions.
 
-## Why do we need this rule?
->Automating tests with CI/CD increases code quality, reduces the risk of introducing bugs, and speeds up the development cycle by providing rapid feedback on code changes.
+### Why use this rule:
+>Using Testing Coverage and automating tests with CI/CD improves code quality, reduces bugs, and increases confidence in the codebase. It helps catch issues early in the development cycle, ensures code stability, and accelerates the delivery process by automating testing and deployment tasks.
 
-## If not apply this rule, what will happen?
-| Neglecting to automate tests with CI/CD can lead to inconsistent test execution, delayed bug detection, and lower code quality.
+### Without this rule:
+>In the negative example, we are not using any testing framework to write test cases for the addition function. This approach lacks automated testing and does not ensure code quality or catch potential bugs early in the development process.
 ```python
-# Negative Python code examples not using this rule
-# 1. Manually running tests before deployment
-# 2. Skipping test execution in the development process
-# 3. Not integrating tests into the CI/CD pipeline
-```
+# Negative Python code examples
+# Not using any testing framework
 
-## If apply this rule?
-| Automating tests with CI/CD ensures that tests are consistently executed, providing immediate feedback on code changes and helping maintain code quality and reliability.
+def addition(a, b):
+    return a + b
+
+result = addition(1, 1)
+print(result)
+```
+### Good use of this rule:
+>In the positive example, we are using pytest to write a simple test case for addition. Automating this test with CI/CD ensures that it is run automatically whenever code changes are made, providing immediate feedback on the correctness of the addition operation.
 ```python
-# Positive Python code examples using this rule
-# 1. Using pytest for automated testing
-# 2. Integrating tests into CI/CD pipelines
-# 3. Running unit tests before deploying code changes
+# Positive Python code examples
+# Using pytest for testing
+import pytest
+
+def test_addition():
+    assert 1 + 1 == 2
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and automate tests with CI/CD in an application project written in Python, you can use tools like pytest for testing, coverage.py for code coverage, and CI/CD tools like Jenkins, GitLab CI/CD, or GitHub Actions. These tools can help in automating the testing process, ensuring code coverage, and integrating tests into the CI/CD pipeline for continuous testing and deployment of the application project.
+### Automated tools can be used to fix the code for applying this rule:
+pytest, coverage.py, Jenkins, GitLab CI/CD, GitHub Actions
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install pytest and coverage.py in your Python project.
+2. Write test cases using pytest to cover different scenarios of your application.
+3. Use coverage.py to measure the code coverage of your tests.
+4. Configure CI/CD pipeline (e.g., Jenkins, GitLab CI/CD, GitHub Actions) to run tests automatically on code changes.
+5. Use the selected automated tool for Python auto fix to ensure code quality and adherence to testing coverage standards.
  --- 
  --- 
- --- 
-# Rule 11. Use parameterized tests for different inputs
-
+---
+# Rule 11
+# Use parameterized tests for different inputs
+---
 | Frequent score for this rule: 50.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Parameterized tests allow for testing multiple inputs with a single test function, improving testing coverage by reducing code duplication. This approach increases the efficiency of testing different scenarios and ensures comprehensive coverage of the codebase.
+---
+### Explanation:
+>Parameterized tests allow for testing multiple inputs with a single test function, improving testing coverage by reducing code duplication. This approach simplifies test maintenance and ensures thorough testing of various scenarios.
 
-## Why do we need this rule?
->Using parameterized tests enhances test coverage by enabling the testing of multiple inputs with minimal code duplication. It promotes efficient testing of various scenarios and helps in identifying edge cases and potential bugs.
+### Why use this rule:
+>Using parameterized tests enhances test coverage by efficiently testing multiple input variations, reducing code duplication, and improving test maintainability. It helps catch edge cases and ensures comprehensive testing of different scenarios, leading to more robust and reliable codebase.
 
-## If not apply this rule, what will happen?
-| This code uses separate test cases for each input combination, leading to code duplication and reduced testing coverage. It is inefficient and does not cover all possible scenarios.
+### Without this rule:
+>This code repeats the same test logic for different inputs, leading to code duplication and reduced testing coverage. It lacks the efficiency and maintainability provided by parameterized tests.
 ```python
 def test_addition():
     assert add(1, 2) == 3
     assert add(4, 5) == 9
+    assert add(10, 5) == 15
 ```
-
-## If apply this rule?
-| This code defines a parameterized test for addition, testing different input combinations with a single test function. It ensures comprehensive testing coverage by checking multiple scenarios with minimal code.
+### Good use of this rule:
+>By using parameterized tests, this code efficiently tests multiple input combinations for addition in a single test function, improving testing coverage, reducing code duplication, and enhancing test maintainability.
 ```python
-@pytest.mark.parametrize('input1, input2, expected', [(1, 2, 3), (4, 5, 9)])
-def test_addition(input1, input2, expected):
-    assert input1 + input2 == expected
+@pytest.mark.parametrize('input1, input2, expected_output', [(1, 2, 3), (4, 5, 9), (10, 5, 15)])
+def test_addition(input1, input2, expected_output):
+    assert input1 + input2 == expected_output
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check and fix the code based on the rule of using parameterized tests for different inputs in a Python application project, you can utilize tools that analyze the test coverage of your codebase. By incorporating parameterized tests, you can increase the coverage of your tests and ensure that different input scenarios are thoroughly tested.
+### Automated tools can be used to fix the code for applying this rule:
+Some automated tools that can be used to fix the code based on this rule include pytest, coverage.py, and Hypothesis.
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+To implement autofix using pytest, you can use the pytest-parametrize plugin. This plugin allows you to easily create parameterized tests in your Python project. Here are the steps to implement autofix with pytest-parametrize:
+1. Install pytest-parametrize plugin
+2. Write parameterized tests using the @parametrize decorator
+3. Run pytest with the --parametrize flag to execute parameterized tests
+4. Review the test coverage report to ensure all input scenarios are covered
+5. Make necessary adjustments to improve test coverage
  --- 
  --- 
- --- 
-# Rule 12. Test asynchronous code with asyncio
-
+---
+# Rule 12
+# Test asynchronous code with asyncio
+---
 | Frequent score for this rule: 50.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing coverage involves ensuring that all parts of the codebase are tested. When testing asynchronous code with asyncio, it is important to cover all asynchronous functions, coroutines, and callbacks to validate their behavior under different scenarios.
+---
+### Explanation:
+>Testing coverage involves ensuring that all parts of the codebase are tested. When testing asynchronous code with asyncio, it is important to cover both synchronous and asynchronous paths to ensure proper functionality and error handling.
 
-## Why do we need this rule?
->Testing asynchronous code with asyncio ensures that the code behaves as expected in asynchronous environments, preventing potential bugs and issues related to concurrency and parallelism.
+### Why use this rule:
+>Testing asynchronous code with asyncio ensures that the code behaves correctly under different execution contexts and helps identify and prevent issues related to concurrency and parallelism.
 
-## If not apply this rule, what will happen?
-| This code example does not test asynchronous behavior properly as it does not await the async function call, leading to potential issues with concurrency and parallelism.
+### Without this rule:
+>This negative example uses time.sleep instead of asyncio.sleep, which can lead to blocking the event loop and incorrect behavior in asynchronous code.
 ```python
-async def test_async_function():
-    result = async_function()
-    assert result == expected_result
+def test_async_function():
+    async def async_function():
+        time.sleep(1)
+    asyncio.run(async_function())
 ```
-
-## If apply this rule?
-| This code example demonstrates testing an asynchronous function using asyncio. It covers the asynchronous behavior by awaiting the function call and asserting the expected result.
+### Good use of this rule:
+>This positive example demonstrates testing an asynchronous function using asyncio.run to ensure proper execution and error handling.
 ```python
-import asyncio
-
-async def test_async_function():
-    result = await async_function()
-    assert result == expected_result
+def test_async_function():
+    async def async_function():
+        await asyncio.sleep(1)
+    asyncio.run(async_function())
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage for asynchronous code with asyncio in a Python application project, you can use tools like coverage.py to measure the code coverage of your tests. Additionally, you can use tools like pytest-asyncio to test asynchronous code with asyncio in your project.
+### Automated tools can be used to fix the code for applying this rule:
+1. coverage.py
+2. pytest-asyncio
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install coverage.py and pytest-asyncio in your Python environment.
+2. Use coverage.py to measure the code coverage of your tests.
+3. Use pytest-asyncio to test asynchronous code with asyncio in your project.
+4. Analyze the coverage report generated by coverage.py to identify areas with low coverage.
+5. Write additional tests or modify existing tests to improve coverage.
+6. Use pytest-asyncio to run the tests and ensure proper testing of asynchronous code.
+7. Repeat the process iteratively to improve testing coverage for asynchronous code in your project.
  --- 
  --- 
- --- 
-# Rule 13. Ensure tests are deterministic
-
+---
+# Rule 13
+# Ensure tests are deterministic
+---
 | Frequent score for this rule: 45.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing coverage ensures that all parts of the code are tested. Deterministic tests produce consistent results when run multiple times. This ensures reliability and predictability in the testing process.
+---
+### Explanation:
+>Testing coverage ensures that all parts of the code are tested. Deterministic tests produce consistent results when run multiple times, aiding in identifying and fixing bugs reliably.
 
-## Why do we need this rule?
->Deterministic tests help in identifying and fixing bugs more effectively. They provide confidence in the correctness of the code and prevent unexpected failures during testing or in production.
+### Why use this rule:
+>Deterministic tests help in building confidence in the codebase by providing consistent and reliable test results. They make it easier to reproduce and debug issues, leading to more stable and maintainable code.
 
-## If not apply this rule, what will happen?
-| In this example, the subtraction test does not use the rule of deterministic testing. The result of the subtraction operation is incorrect, leading to unreliable and unpredictable test results.
+### Without this rule:
+>This code example uses random number generation, leading to non-deterministic test results. The test output will vary each time it is run, making it difficult to identify and debug issues reliably.
 ```python
 # Negative Python code example
-import unittest
+import random
 
-class TestMathFunctions(unittest.TestCase):
-    def test_addition(self):
-        self.assertEqual(add(3, 4), 7)
-
-    def test_subtraction(self):
-        self.assertEqual(subtract(5, 2), 4)
+def test_random_output():
+    result = random.randint(1, 100)
+    assert result > 0
 ```
-
-## If apply this rule?
-| In this example, both the addition and subtraction tests are deterministic, producing consistent and correct results. This ensures reliability and predictability in the testing process, making bug identification and fixing more effective.
+### Good use of this rule:
+>In this example, deterministic tests are written using the unittest framework to test the 'add' and 'subtract' functions. The tests will produce consistent results every time they are run, ensuring reliability and stability in the codebase.
 ```python
 # Positive Python code example
 import unittest
@@ -460,265 +629,352 @@ class TestMathFunctions(unittest.TestCase):
         self.assertEqual(add(3, 4), 7)
 
     def test_subtraction(self):
-        self.assertEqual(subtract(5, 2), 3)
+        self.assertEqual(subtract(10, 5), 5)
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To ensure tests are deterministic in a Python application project, you can check for any non-deterministic behavior in the tests. This includes random data generation, non-constant seed values, or reliance on external factors that may change. By identifying and fixing these issues, you can improve the reliability and consistency of your test suite.
+### Automated tools can be used to fix the code for applying this rule:
+1. Flake8
+2. PyLint
+3. Bandit
+4. PyTest
+5. Coverage
+6. Hypothesis
+7. MutPy
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Identify non-deterministic behavior in tests
+2. Replace non-deterministic elements with deterministic alternatives
+3. Use tools like Flake8, PyLint, and PyTest to detect and fix issues
+4. Run test coverage tools like Coverage to ensure all code paths are tested
+5. Use Hypothesis for property-based testing
+6. Use MutPy for mutation testing to improve test quality
  --- 
  --- 
- --- 
-# Rule 14. Review and update tests regularly
-
+---
+# Rule 14
+# Review and update tests regularly
+---
 | Frequent score for this rule: 40.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing Coverage -> Review and update tests regularly ensures that the tests remain relevant and effective in catching bugs. It involves regularly reviewing existing tests, adding new tests for new features, and updating tests for code changes.
+---
+### Explanation:
+>Review and update tests regularly
 
-## Why do we need this rule?
->Regularly reviewing and updating tests helps maintain the quality and reliability of the codebase. It ensures that the tests accurately reflect the current state of the code and continue to provide meaningful feedback on the code's functionality.
+### Why use this rule:
+>Regularly reviewing and updating tests ensures that the test suite remains effective in catching bugs and verifying the functionality of the code. It helps in maintaining a high level of code quality and reliability by identifying and addressing any gaps in test coverage.
 
-## If not apply this rule, what will happen?
-| In the negative Python code examples, the test for subtraction is not updated regularly, leading to potential gaps in test coverage and outdated assertions.
+### Without this rule:
+>Neglecting to review and update tests regularly can lead to ineffective test coverage, missing bugs, and reduced code quality. Ignoring edge cases and having redundant or outdated test cases can result in false positives and negatives during testing, leading to unreliable results.
 ```python
 # Negative Python code examples
-# Not updating tests regularly
-
-def test_subtraction():
-    assert subtract(5, 3) == 2
+# Not updating tests after code changes
+# Ignoring edge cases in test coverage
+# Having redundant or outdated test cases
 ```
-
-## If apply this rule?
-| In the positive Python code examples, we see the test case being updated to include additional assertions to cover more scenarios, ensuring comprehensive testing.
+### Good use of this rule:
+>Regularly reviewing and updating tests ensures that the test suite remains effective in catching bugs and verifying the functionality of the code. It helps in maintaining a high level of code quality and reliability by identifying and addressing any gaps in test coverage.
 ```python
 # Positive Python code examples
-# Updating existing test case
-
-# Before update
-
-def test_addition():
-    assert add(2, 3) == 5
-
-# After update
-
-def test_addition():
-    assert add(2, 3) == 5
-    assert add(0, 0) == 0
+# Updating test cases to cover new features
+# Adding edge cases to improve test coverage
+# Refactoring tests for better readability and maintainability
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and ensure that tests are reviewed and updated regularly in an application project written in Python, you can use tools like Codecov, Coveralls, or SonarQube. These tools can analyze your codebase, identify areas with low test coverage, and provide insights on which tests need to be updated or added.
+### Automated tools can be used to fix the code for applying this rule:
+1. Codecov
+2. Coveralls
+3. SonarQube
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Integrate one of the automated tools (e.g., Codecov) into your Python project.
+2. Configure the tool to analyze your codebase and provide insights on test coverage.
+3. Use the tool's recommendations to update and improve test coverage in your project.
+4. Set up automated workflows to regularly check and update tests based on the tool's feedback.
  --- 
  --- 
- --- 
-# Rule 15. Include performance tests in test suite
-
+---
+# Rule 15
+# Include performance tests in test suite
+---
 | Frequent score for this rule: 40.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing Coverage should include performance tests in the test suite to ensure that the application meets performance requirements under different conditions and loads.
+---
+### Explanation:
+>Testing Coverage should include performance tests in the test suite to ensure that the application meets performance requirements under different conditions.
 
-## Why do we need this rule?
->Including performance tests in the test suite helps identify performance bottlenecks, optimize code, and ensure the application's scalability and reliability under varying workloads.
+### Why use this rule:
+>Including performance tests in the test suite helps identify performance bottlenecks early in the development cycle, leading to a more efficient and optimized application. It also ensures that the application can handle expected loads and scale effectively.
 
-## If not apply this rule, what will happen?
-| This negative example only tests the functionality of the algorithm and does not include performance testing, which may lead to performance issues going unnoticed.
+### Without this rule:
+>This negative example only includes functional tests for the algorithm and does not test its performance, potentially leading to performance issues going unnoticed.
 ```python
 def test_algorithm():
-    # Test the functionality of the algorithm without considering performance
-    pass
+    # Test the functionality of the algorithm
+    ...
 ```
-
-## If apply this rule?
-| This positive example demonstrates a performance test for an algorithm to ensure it meets performance requirements.
+### Good use of this rule:
+>This positive example includes a performance test for an algorithm to measure its execution time under different input sizes. It helps ensure that the algorithm performs efficiently within the specified time limit.
 ```python
 def test_performance_of_algorithm():
-    # Test the performance of the algorithm under different conditions
-    pass
+    # Test the performance of the algorithm under different input sizes
+    ...
+    assert performance_time < 1.0
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check the inclusion of performance tests in the test suite of an application project, you can use static code analysis tools to scan the codebase for the presence of performance tests. These tools can identify the absence of performance tests and provide insights on where to add them.
+### Automated tools can be used to fix the code for applying this rule:
+Static code analysis tools like SonarQube, CodeClimate, and PyLint can be used to automatically fix the code by suggesting where to include performance tests in the test suite.
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Set up a static code analysis tool such as SonarQube, CodeClimate, or PyLint in your Python project.
+2. Run the static code analysis tool on your project to identify areas where performance tests are missing.
+3. Review the suggestions provided by the tool on where to include performance tests.
+4. Add performance tests to the identified areas in your test suite.
+5. Re-run the static code analysis tool to ensure that the performance tests have been successfully included in the test suite.
  --- 
  --- 
- --- 
-# Rule 16. Measure and improve test performance
-
+---
+# Rule 16
+# Measure and improve test performance
+---
 | Frequent score for this rule: 35.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing coverage is the measure of how much of the code is covered by automated tests. It helps in identifying areas of code that are not tested and ensures better code quality. Improving test performance involves increasing the percentage of code covered by tests and enhancing the effectiveness of tests to catch bugs early in the development process.
+---
+### Explanation:
+>Testing coverage involves measuring the extent to which the code is tested by the test suite and improving the performance of tests. It ensures that all parts of the code are tested thoroughly, leading to higher code quality and fewer bugs in production.
 
-## Why do we need this rule?
->Testing coverage is essential for ensuring the reliability and stability of software applications. It helps in reducing the number of bugs and errors in the codebase, leading to higher quality software. By measuring and improving test performance, developers can have more confidence in the code they write and maintain.
+### Why use this rule:
+>Testing coverage is essential for ensuring the reliability and stability of the codebase. It helps in identifying untested code paths, reducing the risk of undetected bugs, and improving overall code quality and maintainability.
 
-## If not apply this rule, what will happen?
-| In this negative example, the code does not include any test cases or test coverage measurement. This lack of testing coverage can result in untested code paths and potential bugs going unnoticed, leading to lower code quality and reliability.
+### Without this rule:
+>Without measuring and improving test coverage, developers may overlook untested code paths and critical edge cases, leading to undetected bugs in production. Ignoring test failures and not monitoring test performance can result in a false sense of security and decrease code quality.
 ```python
-# Negative Python code example
-# Not using test coverage to measure and improve test performance
-
-def add(a, b):
-    return a + b
-
-# No test cases written for the add function
-
-# No test coverage measurement or improvement strategy implemented
+# Negative Python code examples
+# Writing tests only for a few functions and not covering edge cases
+# Skipping test coverage measurement and not monitoring test performance
+# Ignoring test failures and not fixing failing tests promptly
 ```
-
-## If apply this rule?
-| In this positive example, we are using unittest to write test cases for math functions. By measuring the test coverage of these test cases, we can ensure that a significant portion of the code is tested, leading to better code quality and reliability.
+### Good use of this rule:
+>By measuring and improving test coverage, developers can identify areas of the codebase that are not adequately tested and write additional tests to cover them. This leads to a more robust and reliable codebase with fewer bugs and better maintainability.
 ```python
-# Positive Python code example
-# Using test coverage to measure and improve test performance
-import unittest
-
-class TestMathFunctions(unittest.TestCase):
-    def test_addition(self):
-        self.assertEqual(add(3, 4), 7)
-
-    def test_subtraction(self):
-        self.assertEqual(subtract(5, 2), 3)
+# Positive Python code examples
+# Using test coverage tools like pytest-cov to measure test coverage
+# Ensuring all functions and code paths are covered by tests
+# Writing unit tests for all functions and classes
+# Running tests regularly to monitor coverage improvements
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and measure and improve test performance in a Python application project, you can use tools like pytest-cov for code coverage measurement and profiling tools like cProfile or Py-Spy to analyze test performance. These tools can help identify areas of the codebase that lack test coverage and optimize test performance by identifying bottlenecks.
+### Automated tools can be used to fix the code for applying this rule:
+pytest-cov, cProfile, Py-Spy
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+Choose pytest-cov as the automated tool for Python auto fix. Install pytest-cov using pip. Update your test scripts to include coverage measurement. Run your tests with pytest-cov to generate coverage reports. Analyze the reports to identify areas with low coverage. Improve test coverage by adding tests for uncovered areas. Optimize test performance using cProfile or Py-Spy to identify and fix performance bottlenecks.
  --- 
  --- 
- --- 
-# Rule 17. Use property based testing for complex logic
-
+---
+# Rule 17
+# Use property based testing for complex logic
+---
 | Frequent score for this rule: 30.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing Coverage involves ensuring that all parts of the code are tested. Property-based testing is a technique where properties of the code are defined and tested against a wide range of inputs. It is particularly useful for testing complex logic by generating random inputs to validate the code behavior.
+---
+### Explanation:
+>Testing Coverage involves ensuring that all parts of the code are tested. Property-based testing is a technique where properties of the code are defined and tested against a wide range of inputs. It is particularly useful for complex logic as it can uncover edge cases and unexpected behavior.
 
-## Why do we need this rule?
->Property-based testing helps uncover edge cases and unexpected behaviors that traditional testing may miss. It provides more thorough test coverage and increases confidence in the correctness of the code, especially for complex logic where manual testing may be insufficient.
+### Why use this rule:
+>Property-based testing can uncover bugs that traditional testing may miss, especially in complex logic. It helps improve test coverage and ensures more robust code by testing a variety of inputs and edge cases.
 
-## If not apply this rule, what will happen?
-| This code example manually defines a list for testing the sorting algorithm, which may not cover all edge cases and scenarios. It lacks the comprehensive testing provided by property-based testing.
+### Without this rule:
+>This code only tests addition with specific values and does not cover all possible scenarios. It lacks the thoroughness and coverage provided by property-based testing.
 ```python
-def test_sorting_algorithm():
-    lst = [3, 2, 1]
-    sorted_lst = [1, 2, 3]
-    assert my_sorting_algorithm(lst) == sorted_lst
+def test_addition():
+    assert 2 + 3 == 5
+    assert 3 + 2 == 5
 ```
-
-## If apply this rule?
-| In this example, property-based testing is used to test a sorting algorithm by generating random lists of integers and comparing the output of the algorithm with the sorted list. This approach ensures that the algorithm behaves correctly for a wide range of inputs.
+### Good use of this rule:
+>In this example, property-based testing is used to test the commutative property of addition. The test checks if the sum of two integers is the same regardless of the order of operands.
 ```python
 from hypothesis import given
-from hypothesis import strategies as st
+from hypothesis.strategies import integers
 
-def test_sorting_algorithm():
-    @given(st.lists(st.integers()))
-    def test_sorting(lst):
-        sorted_lst = sorted(lst)
-        assert my_sorting_algorithm(lst) == sorted_lst
-    test_sorting()
+def test_addition_property():
+    @given(integers(), integers())
+    def test_addition(a, b):
+        assert a + b == b + a
+    test_addition()
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+Property-based testing is a powerful technique for testing complex logic in an application project. By generating random inputs and testing the properties of the code, property-based testing can help uncover edge cases and potential bugs that traditional unit tests may miss. Using property-based testing can improve testing coverage and ensure the robustness of the codebase.
+### Automated tools can be used to fix the code for applying this rule:
+Hypothesis
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install the Hypothesis library
+2. Write property-based tests using the @given decorator
+3. Run the tests using the Hypothesis library
+4. Use the Hypothesis strategies to generate random inputs
+5. Analyze the test results and fix any failing properties
  --- 
  --- 
- --- 
-# Rule 18. Test for security vulnerabilities
-
+---
+# Rule 18
+# Test for security vulnerabilities
+---
 | Frequent score for this rule: 20.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing coverage involves testing for security vulnerabilities to ensure that the codebase is secure and free from potential threats. This includes conducting thorough security testing to identify and address any weaknesses or vulnerabilities in the system.
+---
+### Explanation:
+>Testing coverage involves testing for security vulnerabilities to ensure that the code is secure and free from potential threats. It includes conducting various tests such as penetration testing, code review, and vulnerability scanning to identify and mitigate security risks.
 
-## Why do we need this rule?
+### Why use this rule:
 >Testing for security vulnerabilities is crucial to protect sensitive data, prevent unauthorized access, and maintain the integrity of the system. By identifying and fixing security issues early in the development process, the risk of security breaches and data leaks is significantly reduced, enhancing the overall security posture of the application.
 
-## If not apply this rule, what will happen?
-| In the negative Python code examples, security testing is not conducted, and input validation is lacking. This leaves the code vulnerable to security threats such as injection attacks, potentially compromising the security of the application.
+### Without this rule:
+>The negative Python code examples showcase the absence of security testing practices, such as not conducting security testing using tools like Bandit or penetration testing tools. Additionally, the lack of input validation in the code can lead to vulnerabilities like SQL injection, putting the application at risk of security breaches and data leaks.
 ```python
 # Negative Python code examples
 # Not conducting security testing
-# Lack of input validation
-user_input = input('Enter your username:')
-print('Hello, ' + user_input)
+# Lack of input validation leading to potential vulnerabilities
+query = "SELECT * FROM users WHERE username = '" + username + "'"
+conn = psycopg2.connect(database='mydb')
+cursor = conn.cursor()
+cursor.execute(query)
+result = cursor.fetchall()
 ```
-
-## If apply this rule?
-| In the positive Python code examples, security testing tools are used to scan the codebase for vulnerabilities, and input validation is implemented to prevent injection attacks. These practices help identify and mitigate security risks, ensuring a more secure and robust application.
+### Good use of this rule:
+>The positive Python code examples demonstrate the implementation of security testing practices such as using tools like Bandit for static code analysis, conducting penetration testing with tools like nmap, and following secure coding practices like using parameterized queries to prevent SQL injection vulnerabilities.
 ```python
 # Positive Python code examples
-# Using security testing tools to scan for vulnerabilities
-security_testing_tool.scan_codebase()
+# Conducting security testing using tools like Bandit
+import bandit
 
-# Implementing input validation to prevent injection attacks
-if user_input not in allowed_values:
-    raise ValueError('Invalid input')
+# Performing penetration testing
+import nmap
+
+# Implementing secure coding practices
+# Using parameterized queries to prevent SQL injection
+import psycopg2
+query = "SELECT * FROM users WHERE username = %s"
+conn = psycopg2.connect(database='mydb')
+cursor = conn.cursor()
+cursor.execute(query, (username,))
+result = cursor.fetchall()
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and Test for security vulnerabilities in a Python application project, you can use tools like pytest-cov for code coverage and Bandit for security vulnerabilities. These tools can be integrated into your CI/CD pipeline to ensure that your code is thoroughly tested and secure. Additionally, you can use static code analysis tools like SonarQube or CodeQL to identify potential security issues in your codebase.
+### Automated tools can be used to fix the code for applying this rule:
+1. pytest-cov for code coverage
+2. Bandit for security vulnerabilities
+3. SonarQube for static code analysis
+4. CodeQL for static code analysis
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Integrate pytest-cov into your testing framework to measure code coverage.
+2. Use Bandit to scan your codebase for security vulnerabilities.
+3. Configure SonarQube or CodeQL to perform static code analysis on your Python project.
+4. Implement automated code fixes using a tool like Black for Python code formatting.
  --- 
  --- 
- --- 
-# Rule 19. Include end to end tests for critical paths
-
+---
+# Rule 19
+# Include end to end tests for critical paths
+---
 | Frequent score for this rule: 10.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Including end-to-end tests for critical paths ensures that the entire system functions correctly from start to finish. This type of testing covers all components and interactions, providing confidence in the system's reliability and performance under real-world conditions.
+---
+### Explanation:
+>Including end-to-end tests for critical paths ensures that the entire system functions correctly from start to finish, covering all key functionalities. This helps identify any issues or bugs that may arise in critical user journeys.
 
-## Why do we need this rule?
->End-to-end tests for critical paths help identify issues that may arise when different components interact, ensuring the system works as expected in production. It also helps in detecting integration issues early in the development cycle, leading to a more robust and stable application.
+### Why use this rule:
+>End-to-end tests for critical paths provide confidence in the system's reliability and performance, reducing the risk of critical failures in production. They also help in detecting integration issues between different components of the system.
 
-## If not apply this rule, what will happen?
-| The negative Python code examples showcase a test case that only focuses on unit testing a specific component without considering the interactions with other components. This approach neglects end-to-end testing for critical paths, leading to potential integration issues and overlooking the system's overall functionality.
+### Without this rule:
+>In this negative example, the code lacks an end-to-end test for critical functionality. This omission increases the risk of critical failures going undetected, leading to potential issues in production.
 ```python
-# Negative Python code examples
-# Not using end-to-end tests for critical paths
-# Example of a test case only focusing on unit testing
+# Negative Python code example
+# Not including end-to-end test for critical path
 
-def test_add_to_cart():
-    # Unit test for adding items to cart
-    # Missing integration with other components
-    assert add_to_cart(item) == cart_contains_item(item)
+def test_critical_functionality():
+    # Missing end-to-end test for critical path
+    pass
 ```
-
-## If apply this rule?
-| The positive Python code examples demonstrate the implementation of end-to-end tests for critical paths, specifically testing the e-commerce checkout process. By simulating user actions and verifying expected outcomes, these tests ensure the functionality of the entire system from start to finish.
+### Good use of this rule:
+>In this positive example, an end-to-end test is created using Selenium to simulate a critical user journey on a website. The test verifies the presence of a button on a specific page, ensuring that the critical path functions as expected.
 ```python
-# Positive Python code examples
-# Using end-to-end tests for critical paths
-# Example of a test case for an e-commerce checkout process
+# Positive Python code example
+# Include end-to-end test for critical path
 
-def test_checkout_process():
-    # Simulate user actions
-    login()
-    add_to_cart()
-    proceed_to_checkout()
-    select_payment_method()
-    place_order()
-    # Assertions to verify the order is successful
-    assert order_confirmation_message_displayed()
-    assert order_status_updated_in_database()
+from selenium import webdriver
+
+def test_critical_path():
+    driver = webdriver.Chrome()
+    driver.get('https://example.com')
+    # Perform critical path actions
+    assert driver.find_element_by_xpath('//button').is_displayed()
+    driver.quit()
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and include end-to-end tests for critical paths in an application project written in Python, you can use code coverage tools like coverage.py to measure the code coverage of your tests. Additionally, you can use tools like Selenium or Pytest to write end-to-end tests for critical paths in your application project.
+### Automated tools can be used to fix the code for applying this rule:
+1. coverage.py
+2. Selenium
+3. Pytest
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install coverage.py using pip:
+   ```
+   pip install coverage
+   ```
+2. Use coverage.py to measure the code coverage of your tests:
+   ```
+   coverage run -m pytest
+   ```
+3. Generate a coverage report:
+   ```
+   coverage report
+   ```
+4. Write end-to-end tests using Selenium or Pytest to cover critical paths in your application project.
+5. Run the end-to-end tests along with unit tests to ensure comprehensive testing coverage.
  --- 
  --- 
- --- 
-# Rule 20. Use mutation testing to improve test suite
-
+---
+# Rule 20
+# Use mutation testing to improve test suite
+---
 | Frequent score for this rule: 5.0 | [^Top](#testing-coverage) 
 
-## Explanation
->Testing coverage is the measure of how much of the code is tested by the test suite. Mutation testing is a technique to improve the quality of the test suite by introducing small changes (mutations) to the code and checking if the tests can detect these changes. It helps identify weak spots in the test suite and improve overall code quality.
+---
+### Explanation:
+>Testing coverage is the measure of how much of the code is covered by tests. Mutation testing involves introducing small changes (mutations) to the code to see if the tests can detect them. By using mutation testing, we can improve the effectiveness of our test suite by ensuring it can catch subtle bugs and edge cases.
 
-## Why do we need this rule?
->Mutation testing helps in identifying gaps in the test suite by checking if the tests can detect small changes in the code. It ensures that the tests are robust and can catch potential bugs or errors in the codebase.
+### Why use this rule:
+>Mutation testing helps in identifying weaknesses in the test suite and improving the overall quality of testing. It ensures that the tests are robust and can detect even minor changes in the codebase.
 
-## If not apply this rule, what will happen?
-| Without mutation testing, the test suite may have blind spots and fail to detect subtle bugs or errors in the codebase.
+### Without this rule:
+>In the negative Python code examples, we showcase scenarios where mutation testing is not utilized, leading to undetected bugs and limited test coverage. Without mutation testing, the test suite may not be able to catch subtle bugs and edge cases, compromising the quality of testing.
 ```python
 # Negative Python code examples
 # Not using mutation testing to improve test suite
-# TODO: Add negative Python code examples
+# Example 1: 
+# Lack of mutation testing, leading to undetected bugs
+# Example 2: 
+# Absence of mutation testing, resulting in limited test coverage
 ```
-
-## If apply this rule?
-| By using mutation testing, the test suite can be enhanced to detect small changes in the code, ensuring better coverage and reliability of the tests.
+### Good use of this rule:
+>In the positive Python code examples, we demonstrate how to use mutation testing to introduce mutations in the code and verify if the test suite can detect them. This approach helps in strengthening the test suite and improving the overall test coverage.
 ```python
 # Positive Python code examples
 # Using mutation testing to improve test suite
-# TODO: Add positive Python code examples
+# Example 1: 
+# Add a mutation to test if the test suite can detect it
+# Example 2: 
+# Introduce a mutation in the code and verify if the tests fail
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Testing Coverage and use mutation testing to improve the test suite in an application project, you can leverage tools like mutation testing frameworks to identify weak spots in your test suite and generate mutants to assess the effectiveness of your tests. By analyzing the mutation score, you can determine areas that need better test coverage and enhance the quality of your tests.
+### Automated tools can be used to fix the code for applying this rule:
+Mutation testing frameworks like mutmut, Cosmic Ray, and mutpy can be used to automatically fix the code by generating mutants and evaluating the test suite's effectiveness.
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install a mutation testing framework like mutmut.
+2. Generate mutants for your Python code using the mutation testing framework.
+3. Evaluate the mutation score to identify areas with low test coverage.
+4. Improve your test suite by adding tests for the identified weak spots.
+5. Repeat the mutation testing process to ensure the effectiveness of the updated test suite.
  --- 
  --- 

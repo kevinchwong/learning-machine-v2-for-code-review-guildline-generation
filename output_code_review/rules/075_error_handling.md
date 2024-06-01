@@ -4,232 +4,329 @@
 
 |     | Code Review Rule | Frequency Score |
 | --- | --- | --- |
-| 1 | [Ensure all exceptions are caught and handled appropriately](#rule-1-ensure-all-exceptions-are-caught-and-handled-appropriately) | 95.0 |
-| 2 | [Use specific exception types rather than a generic exception](#rule-2-use-specific-exception-types-rather-than-a-generic-exception) | 90.0 |
-| 3 | [Log exceptions with appropriate error messages](#rule-3-log-exceptions-with-appropriate-error-messages) | 85.0 |
-| 4 | [Avoid using bare 'except' clauses](#rule-4-avoid-using-bare-except-clauses) | 80.0 |
-| 5 | [Handle exceptions at the appropriate level](#rule-5-handle-exceptions-at-the-appropriate-level) | 80.0 |
-| 6 | [Ensure that resources are properly cleaned up in case of an error (e.g., using 'finally' or context managers)](#rule-6-ensure-that-resources-are-properly-cleaned-up-in-case-of-an-error-e-g-using-finally-or-context-managers) | 75.0 |
-| 7 | [Avoid silencing exceptions without logging or re raising](#rule-7-avoid-silencing-exceptions-without-logging-or-re-raising) | 75.0 |
-| 8 | [Do not suppress exceptions without a good reason](#rule-8-do-not-suppress-exceptions-without-a-good-reason) | 70.0 |
-| 9 | [Avoid excessive nesting of try except blocks](#rule-9-avoid-excessive-nesting-of-try-except-blocks) | 70.0 |
-| 10 | [Use custom exception classes for domain specific errors](#rule-10-use-custom-exception-classes-for-domain-specific-errors) | 65.0 |
-| 11 | [Document the exceptions that a function can raise](#rule-11-document-the-exceptions-that-a-function-can-raise) | 60.0 |
-| 12 | [Use logging module for exception handling](#rule-12-use-logging-module-for-exception-handling) | 60.0 |
-| 13 | [Ensure that exception messages are user friendly and actionable](#rule-13-ensure-that-exception-messages-are-user-friendly-and-actionable) | 55.0 |
-| 14 | [Use retry logic for transient errors](#rule-14-use-retry-logic-for-transient-errors) | 50.0 |
-| 15 | [Use assertions for checking internal invariants](#rule-15-use-assertions-for-checking-internal-invariants) | 50.0 |
+| 1 | [Ensure all exceptions are caught and handled appropriately](#rule-1) | 95.0 |
+| 2 | [Use specific exception types rather than a generic exception](#rule-2) | 90.0 |
+| 3 | [Log exceptions with appropriate error messages](#rule-3) | 85.0 |
+| 4 | [Avoid using bare 'except' clauses](#rule-4) | 80.0 |
+| 5 | [Handle exceptions at the appropriate level](#rule-5) | 80.0 |
+| 6 | [Ensure that resources are properly cleaned up in case of an error (e.g., using 'finally' or context managers)](#rule-6) | 75.0 |
+| 7 | [Avoid silencing exceptions without logging or re raising](#rule-7) | 75.0 |
+| 8 | [Do not suppress exceptions without a good reason](#rule-8) | 70.0 |
+| 9 | [Avoid excessive nesting of try except blocks](#rule-9) | 70.0 |
+| 10 | [Use custom exception classes for domain specific errors](#rule-10) | 65.0 |
+| 11 | [Document the exceptions that a function can raise](#rule-11) | 60.0 |
+| 12 | [Use logging module for exception handling](#rule-12) | 60.0 |
+| 13 | [Ensure that exception messages are user friendly and actionable](#rule-13) | 55.0 |
+| 14 | [Use retry logic for transient errors](#rule-14) | 50.0 |
+| 15 | [Use assertions for checking internal invariants](#rule-15) | 50.0 |
 ---
- --- 
-# Rule 1. Ensure all exceptions are caught and handled appropriately
-
+---
+# Rule 1
+# Ensure all exceptions are caught and handled appropriately
+---
 | Frequent score for this rule: 95.0 | [^Top](#error-handling) 
 
-## Explanation
+---
+### Explanation:
 >Error Handling: Ensure all exceptions are caught and handled appropriately to prevent unexpected crashes and provide meaningful error messages for better debugging and user experience.
 
-## Why do we need this rule?
->This rule is essential to maintain the stability and reliability of the codebase, improve error traceability, and enhance user experience by gracefully handling unexpected errors.
+### Why use this rule:
+>This rule is essential to maintain the stability and reliability of the codebase, improve error traceability, and enhance user experience by gracefully handling errors.
 
-## If not apply this rule, what will happen?
-| In this example, there is no error handling implemented, which can lead to unexpected crashes and lack of meaningful error messages, making it difficult to debug and troubleshoot issues.
+### Without this rule:
+>In this example, there is no error handling mechanism in place, which can lead to unexpected crashes and unhandled exceptions, making it difficult to identify and resolve issues.
 ```python
 # No error handling
 # code that may raise an exception
 ```
-
-## If apply this rule?
-| In this example, we use a try-except block to catch and handle any exceptions that may occur, ensuring the code does not crash unexpectedly and providing a way to handle errors gracefully.
+### Good use of this rule:
+>In this example, we use a try-except block to catch and handle any exceptions that may occur, ensuring the code does not crash unexpectedly and providing a way to handle errors gracefully.
 ```python
 try:
     # code that may raise an exception
 except Exception as e:
     # handle the exception appropriately
 ```
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling and ensure all exceptions are caught and handled appropriately in a Python project, you can use static code analysis tools that specialize in detecting and fixing error handling issues. These tools can analyze the codebase to identify areas where exceptions are not properly handled or caught. Additionally, you can use linters and code quality tools to enforce best practices for error handling in Python code.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+3. Bandit
+4. Pyright
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+Choose Pylint as the automated tool for Python auto-fix.
 
- --- 
- --- 
- --- 
-# Rule 2. Use specific exception types rather than a generic exception
+Steps to implement the autofix with Pylint:
 
+1. Install Pylint using pip:
+   ```
+   pip install pylint
+   ```
+
+2. Run Pylint on your Python project to identify error handling issues:
+   ```
+   pylint your_project_directory
+   ```
+
+3. Pylint will provide a detailed report highlighting areas where exceptions are not properly handled.
+
+4. Use Pylint's autofix feature to automatically fix some of the error handling issues:
+   ```
+   pylint --fix your_project_directory
+   ```
+
+5. Review the changes made by Pylint and manually address any remaining error handling issues.
+
+6. Configure Pylint to enforce error handling best practices in your project by customizing the Pylint configuration file.
+
+7. Run Pylint regularly as part of your continuous integration process to ensure ongoing compliance with error handling standards.
+ --- 
+ --- 
+---
+# Rule 2
+# Use specific exception types rather than a generic exception
+---
 | Frequent score for this rule: 90.0 | [^Top](#error-handling) 
 
-## Explanation
->When handling errors in Python, it is recommended to use specific exception types instead of a generic exception to provide more clarity and precision in identifying and resolving issues.
+---
+### Explanation:
+>When handling errors in Python, it is recommended to use specific exception types rather than a generic exception to provide more detailed information about the error. This helps in identifying and resolving issues more effectively.
 
-## Why do we need this rule?
->Using specific exception types allows for better error handling, as it helps in pinpointing the exact cause of the error and enables more targeted and effective troubleshooting and debugging processes.
+### Why use this rule:
+>Using specific exception types improves code readability, maintainability, and debugging. It allows for better error handling and provides more context about the type of error that occurred, leading to more precise troubleshooting and resolution of issues.
 
-## If not apply this rule, what will happen?
-| In this negative example, a generic 'Exception' is used to catch all types of exceptions, leading to ambiguity in identifying the root cause of the error and making it harder to handle and debug.
+### Without this rule:
+>In this example, a generic exception type 'Exception' is used to catch all types of errors, which can make it challenging to identify the specific cause of the error and handle it appropriately.
 ```python
 try:
-    # code that may raise an exception
+    # Some code that may raise an exception
 except Exception as e:
-    # handle the exception
+    # Handle the exception
 ```
-
-## If apply this rule?
-| In this positive example, we catch a specific exception 'SpecificException' which provides clear information about the type of error that occurred, making it easier to handle and troubleshoot.
+### Good use of this rule:
+>In this example, we use a specific exception type 'SpecificException' to catch and handle a particular type of error, providing detailed information about the error and enabling targeted error handling.
 ```python
 try:
-    # code that may raise a specific exception
+    # Some code that may raise a specific exception
 except SpecificException as e:
-    # handle the specific exception
+    # Handle the specific exception
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check and fix the code for the rule 'Error Handling -> Use specific exception types rather than a generic exception', you can use static code analysis tools that can identify instances where generic exceptions are being used and suggest or automatically replace them with specific exception types. These tools can analyze the codebase and provide recommendations for improving error handling by using more specific exception classes.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+3. PyCodeStyle
+4. PyLint
+5. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install Pylint using pip: pip install pylint
+2. Run Pylint on your Python project to identify instances of using generic exceptions
+3. Use Pylint's autofix feature to automatically replace generic exceptions with specific exception types
+4. Review the changes made by Pylint and ensure they align with the desired error handling strategy
+5. Save the changes and commit them to your codebase
  --- 
  --- 
- --- 
-# Rule 3. Log exceptions with appropriate error messages
-
+---
+# Rule 3
+# Log exceptions with appropriate error messages
+---
 | Frequent score for this rule: 85.0 | [^Top](#error-handling) 
 
-## Explanation
->Error Handling: Log exceptions with appropriate error messages to provide detailed information about errors for debugging and troubleshooting purposes.
+---
+### Explanation:
+>Error Handling involves logging exceptions with appropriate error messages to provide useful information for debugging and troubleshooting. This practice helps in identifying and resolving issues quickly and efficiently, improving the overall reliability and maintainability of the codebase.
 
-## Why do we need this rule?
->This rule is essential for improving code maintainability, debugging, and troubleshooting processes. It helps developers identify and fix issues quickly by providing detailed error information.
+### Why use this rule:
+>Logging exceptions with meaningful error messages enhances code maintainability, aids in debugging, and provides valuable insights for identifying and resolving issues effectively.
 
-## If not apply this rule, what will happen?
-| In this example, an exception occurs during division by zero, but no error handling is implemented. This can lead to a program crash without providing any information about the error.
+### Without this rule:
+>In this example, an exception occurs during division by zero, but there is no error handling or logging of the exception. This can lead to unexpected crashes and make it challenging to identify the root cause of the issue.
 ```python
 # Code without error handling
+# No logging of exceptions
 result = 10 / 0
 ```
-
-## If apply this rule?
-| In this example, the code is wrapped in a try-except block, and the exception is logged with a descriptive error message. This helps in identifying the specific error and its context.
+### Good use of this rule:
+>In this example, the code is wrapped in a try-except block, and the exception is logged with a descriptive error message. This helps in capturing and logging exceptions for better error handling and debugging.
 ```python
 try:
-    # Code that may raise an exception
+    # Some code that may raise an exception
 except Exception as e:
     logger.error(f'An error occurred: {str(e)}')
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling -> Log exceptions with appropriate error messages in an application project written in Python, you can use static code analysis tools that can detect missing or improper error handling and logging of exceptions in the codebase. These tools can analyze the code and provide suggestions for improving error handling practices.
+### Automated tools can be used to fix the code for applying this rule:
+1. Flake8
+2. Pylint
+3. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install the chosen static code analysis tool
+2. Run the tool on your Python project to identify areas where error handling and exception logging can be improved
+3. Review the suggestions provided by the tool and make necessary changes to the code to log exceptions with appropriate error messages
+4. Re-run the tool to ensure that the error handling improvements have been implemented correctly
  --- 
  --- 
- --- 
-# Rule 4. Avoid using bare 'except' clauses
-
+---
+# Rule 4
+# Avoid using bare 'except' clauses
+---
 | Frequent score for this rule: 80.0 | [^Top](#error-handling) 
 
-## Explanation
+---
+### Explanation:
 >Avoid using bare 'except' clauses in Python to handle errors. Instead, use specific exception types to catch and handle only the expected errors.
 
-## Why do we need this rule?
->Using bare 'except' clauses can lead to catching unexpected exceptions, hiding errors, and making debugging difficult. It is considered a best practice to handle specific exceptions to improve code readability, maintainability, and reliability.
+### Why use this rule:
+>Using bare 'except' clauses can lead to catching unexpected errors, hiding bugs, and making debugging difficult. It is important to handle specific exceptions to provide better error messages and improve code reliability.
 
-## If not apply this rule, what will happen?
-| In this negative example, the bare 'except' clause catches all exceptions, including unexpected ones, leading to potential issues with error handling and debugging.
+### Without this rule:
+>In this negative example, using a bare 'except' clause catches all exceptions, including unexpected ones, making it harder to identify and debug specific issues.
 ```python
 try:
-    # code that may raise exceptions
+    # code that may raise an exception
 except:
     # handle any exception
 ```
-
-## If apply this rule?
-| By using specific exception types in 'except' clauses, the code explicitly handles only the expected exceptions, making it easier to identify and address errors.
+### Good use of this rule:
+>By using specific exception types in 'except' clauses, we can handle only the expected errors and provide appropriate error handling for each type of exception, improving code readability and maintainability.
 ```python
 try:
-    # code that may raise specific exceptions
+    # code that may raise an exception
 except SpecificException as e:
     # handle SpecificException
 except AnotherSpecificException as e:
     # handle AnotherSpecificException
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling and avoid using bare 'except' clauses in a Python project, you can use static code analysis tools like Pylint, Flake8, or Bandit. These tools can analyze the codebase and identify instances where bare 'except' clauses are used for error handling.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+3. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install the chosen static code analysis tool (e.g., Pylint).
+2. Run the tool on your Python project to identify instances of bare 'except' clauses.
+3. Use the autofix feature of the tool to automatically refactor the code and replace bare 'except' clauses with specific exception handling.
+4. Review the changes made by the tool to ensure they are correct and do not introduce new issues.
+5. Commit the changes to your codebase.
  --- 
  --- 
- --- 
-# Rule 5. Handle exceptions at the appropriate level
-
+---
+# Rule 5
+# Handle exceptions at the appropriate level
+---
 | Frequent score for this rule: 80.0 | [^Top](#error-handling) 
 
-## Explanation
->Error handling involves handling exceptions at the appropriate level in the code to ensure graceful recovery from unexpected errors. It helps in maintaining code reliability and improves the overall user experience by providing meaningful error messages and preventing crashes.
+---
+### Explanation:
+>Error Handling: Handle exceptions at the appropriate level to ensure proper handling and maintain code readability and maintainability.
 
-## Why do we need this rule?
->Handling exceptions at the appropriate level enhances code readability, maintainability, and helps in identifying and resolving issues more efficiently. It also prevents unexpected crashes and provides a better user experience by gracefully handling errors.
+### Why use this rule:
+>This rule is important to prevent unexpected crashes, improve code maintainability, and make debugging easier by handling exceptions at the appropriate level.
 
-## If not apply this rule, what will happen?
-| In this example, all exceptions are caught using a generic 'Exception' class, which can lead to masking specific errors and not handling them appropriately.
+### Without this rule:
+>In this example, all exceptions are handled at a single level, making it difficult to differentiate between different types of exceptions and leading to potential issues in handling specific exceptions.
 ```python
-# Incorrect way of handling exceptions
 try:
     # code that may raise an exception
 except Exception as e:
-    # handle the exception in a generic way
+    # handle all exceptions at a single level
 ```
-
-## If apply this rule?
-| In this example, exceptions are handled using a try-except block at the appropriate level, ensuring that any potential errors are caught and handled gracefully.
+### Good use of this rule:
+>In this example, exceptions are handled at different levels based on their type, ensuring proper handling and preventing unexpected crashes.
 ```python
 try:
     # code that may raise an exception
-except SomeException as e:
-    # handle the exception appropriately
+except SpecificException as e:
+    # handle the specific exception
+except AnotherException as e:
+    # handle another specific exception
+except Exception as e:
+    # handle any other exceptions
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling -> Handle exceptions at the appropriate level in the application project, you can use static code analysis tools that can identify where exceptions are being handled and suggest improvements. These tools can analyze the codebase and provide insights on whether exceptions are being handled at the appropriate level or not.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+3. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install the chosen tool (e.g., Pylint) using pip.
+2. Run the tool on your Python project to identify areas where exceptions are not handled at the appropriate level.
+3. Review the suggestions provided by the tool and make necessary changes to handle exceptions correctly.
+4. Re-run the tool to ensure all exceptions are handled appropriately.
  --- 
  --- 
- --- 
-# Rule 6. Ensure that resources are properly cleaned up in case of an error (e.g., using 'finally' or context managers)
-
+---
+# Rule 6
+# Ensure that resources are properly cleaned up in case of an error (e.g., using 'finally' or context managers)
+---
 | Frequent score for this rule: 75.0 | [^Top](#error-handling) 
 
-## Explanation
+---
+### Explanation:
 >Error Handling: Ensure that resources are properly cleaned up in case of an error by using 'finally' or context managers. This helps prevent resource leaks and ensures proper cleanup even if an error occurs during execution.
 
-## Why do we need this rule?
+### Why use this rule:
 >Proper resource cleanup is essential to maintain system stability, prevent memory leaks, and ensure efficient resource utilization. Neglecting to clean up resources can lead to performance issues, memory leaks, and potential security vulnerabilities.
 
-## If not apply this rule, what will happen?
-| In this example, the resource cleanup code is missing, which can lead to resource leaks and potential issues if an exception occurs.
+### Without this rule:
+>In this example, the code does not include a 'finally' block or context manager to ensure proper cleanup of resources. This can lead to resource leaks and inefficient resource management.
 ```python
 try:
     # Code that may raise an exception
-except SomeException as e:
-    # Handle the exception
-# Missing resource cleanup code
+except Exception as e:
+    # Error handling without proper cleanup
 ```
-
-## If apply this rule?
-| The 'finally' block ensures that the cleanup code is executed regardless of whether an exception is raised or not, guaranteeing proper resource cleanup.
+### Good use of this rule:
+>The 'finally' block ensures that the cleanup code is always executed, even if an exception is raised. This guarantees proper resource cleanup regardless of whether an error occurs or not.
 ```python
 try:
     # Code that may raise an exception
-except SomeException as e:
-    # Handle the exception
 finally:
-    # Clean up resources
+    # Cleanup code to release resources
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check and fix Error Handling for ensuring that resources are properly cleaned up in case of an error, tools can analyze the code to identify areas where resources are not properly released in case of exceptions. This can be done by looking for missing 'finally' blocks or improper use of context managers in the codebase.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+3. PyCodeStyle
+4. Black
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install the chosen automated tool (e.g., Pylint) using pip.
+2. Run the tool on the Python project to identify areas where resources are not properly cleaned up in case of errors.
+3. Review the tool's output to understand the specific issues identified.
+4. Implement the suggested fixes manually or use the autofix feature provided by the tool.
+5. Re-run the tool to ensure that the error handling has been improved and resources are properly cleaned up in case of exceptions.
  --- 
  --- 
- --- 
-# Rule 7. Avoid silencing exceptions without logging or re raising
-
+---
+# Rule 7
+# Avoid silencing exceptions without logging or re raising
+---
 | Frequent score for this rule: 75.0 | [^Top](#error-handling) 
 
-## Explanation
->Avoid silencing exceptions without logging or re-raising to maintain transparency and traceability in the codebase. Silencing exceptions can lead to hidden bugs and make debugging difficult.
+---
+### Explanation:
+>Error Handling: Avoid silencing exceptions without logging or re-raising. Silencing exceptions without proper handling can lead to hidden bugs and make troubleshooting difficult.
 
-## Why do we need this rule?
->This rule is important to ensure that exceptions are properly handled and not ignored, which can result in unexpected behavior and difficult debugging scenarios.
+### Why use this rule:
+>This rule is important to ensure that exceptions are properly handled and logged for debugging and troubleshooting purposes. Silencing exceptions can hide critical errors and make it challenging to identify and fix issues in the codebase.
 
-## If not apply this rule, what will happen?
-| In this example, the code catches an exception but does not log or re-raise it. This silences the exception and can hide potential issues in the codebase.
+### Without this rule:
+>In this example, the exception is silenced without any logging or re-raising, which can lead to hidden bugs and make troubleshooting difficult.
 ```python
 try:
     # code that may raise an exception
 except Exception as e:
     pass
 ```
-
-## If apply this rule?
-| In this example, the code catches an exception, logs it with detailed information, and then re-raises it. This approach ensures that the exception is not silenced and provides visibility into the error for debugging purposes.
+### Good use of this rule:
+>In this example, the code properly handles the exception by logging the error message and re-raising the exception for further handling.
 ```python
 try:
     # code that may raise an exception
@@ -237,268 +334,386 @@ except Exception as e:
     logger.error(f'An error occurred: {e}')
     raise
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling -> Avoid silencing exceptions without logging or re-raising in an application project written in Python, you can use static code analysis tools that can detect instances where exceptions are caught but not logged or re-raised. These tools can help identify potential issues in the codebase related to error handling practices.
+### Automated tools can be used to fix the code for applying this rule:
+1. Flake8
+2. Pylint
+3. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install Flake8
+2. Run Flake8 to identify instances of silencing exceptions without logging or re-raising
+3. Modify the code to handle exceptions appropriately by logging or re-raising them
+4. Re-run Flake8 to ensure the issues have been fixed
  --- 
  --- 
- --- 
-# Rule 8. Do not suppress exceptions without a good reason
-
+---
+# Rule 8
+# Do not suppress exceptions without a good reason
+---
 | Frequent score for this rule: 70.0 | [^Top](#error-handling) 
 
-## Explanation
->Error Handling: Do not suppress exceptions without a good reason. Always handle exceptions appropriately to ensure proper error reporting and debugging.
+---
+### Explanation:
+>Error Handling: Do not suppress exceptions without a good reason. Always handle exceptions appropriately to maintain code reliability and ensure proper error reporting and debugging.
 
-## Why do we need this rule?
->Suppressing exceptions without a good reason can lead to hidden bugs and make it difficult to diagnose and fix issues in the code. It can also result in unexpected behavior for users and make the codebase harder to maintain and debug.
+### Why use this rule:
+>Suppressing exceptions without a good reason can lead to hidden bugs, difficult debugging, and unexpected behavior in the code. Proper error handling improves code quality, maintainability, and reliability by addressing issues transparently.
 
-## If not apply this rule, what will happen?
-| In this example, exceptions are caught but not handled, leading to the suppression of errors without any proper handling or reporting.
+### Without this rule:
+>In this example, exceptions are suppressed without any handling, leading to potential bugs and difficulties in identifying and resolving issues.
 ```python
 try:
     # code that may raise an exception
-except Exception as e:
+except:
     pass
 ```
-
-## If apply this rule?
-| In this example, exceptions are caught and handled properly, ensuring that errors are not suppressed and can be appropriately managed.
+### Good use of this rule:
+>In this example, exceptions are caught and handled properly, ensuring that errors are not suppressed and appropriate actions are taken to manage them.
 ```python
 try:
     # code that may raise an exception
 except Exception as e:
     # handle the exception appropriately
+    print('An error occurred:', e)
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check for Error Handling -> Do not suppress exceptions without a good reason in a Python application project, you can use static code analysis tools that can detect instances where exceptions are suppressed without a valid reason. These tools can analyze the codebase and flag any occurrences of exception suppression for further review and potential fixing.
+### Automated tools can be used to fix the code for applying this rule:
+1. Flake8
+2. Pylint
+3. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install Flake8
+2. Run Flake8 to identify instances of exception suppression
+3. Manually review the identified instances and determine if they are valid or need to be fixed
+4. Implement necessary changes to handle exceptions appropriately
  --- 
  --- 
- --- 
-# Rule 9. Avoid excessive nesting of try except blocks
-
+---
+# Rule 9
+# Avoid excessive nesting of try except blocks
+---
 | Frequent score for this rule: 70.0 | [^Top](#error-handling) 
 
-## Explanation
->Avoid excessive nesting of try except blocks to improve code readability and maintainability. Instead, use a single try except block at the appropriate level to handle exceptions effectively without cluttering the code with unnecessary nesting.
+---
+### Explanation:
+>Avoid excessive nesting of try except blocks to improve code readability and maintainability. Instead, use a single try block with multiple except blocks to handle different types of exceptions.
 
-## Why do we need this rule?
->Excessive nesting of try except blocks can make the code harder to read, understand, and maintain. It can also lead to confusion about which block is handling which exception, making debugging more challenging.
+### Why use this rule:
+>Excessive nesting of try except blocks can make the code harder to read, understand, and maintain. It can also lead to redundant error handling logic and make it difficult to debug and troubleshoot issues effectively.
 
-## If not apply this rule, what will happen?
-| In this example, there is excessive nesting of try except blocks, which can make the code harder to understand and maintain. It is not clear which block is handling which exception, leading to potential confusion and difficulty in debugging.
+### Without this rule:
+>Excessive nesting of try except blocks can lead to confusion, redundant error handling, and make it harder to follow the flow of the code.
 ```python
 try:
     try:
-        # Code that may raise exceptions
-    except Exception as e:
-        # Handle the exception
-except AnotherException as ae:
-    # Handle another exception
+        # code that may raise exceptions
+    except ValueError as ve:
+        # handle ValueError
+except KeyError as ke:
+    # handle KeyError
 ```
-
-## If apply this rule?
-| By using a single try except block at the appropriate level, the code becomes more concise and easier to follow. It clearly separates the exception handling logic from the main code, improving readability and maintainability.
+### Good use of this rule:
+>Using a single try block with multiple except blocks makes it easier to manage and differentiate between different types of exceptions, improving code readability and maintainability.
 ```python
 try:
-    # Code that may raise exceptions
-except Exception as e:
-    # Handle the exception
+    # code that may raise exceptions
+except ValueError as ve:
+    # handle ValueError
+except KeyError as ke:
+    # handle KeyError
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check for excessive nesting of try-except blocks in a Python project, you can use static code analysis tools like Pylint, Flake8, or Bandit. These tools can analyze the codebase and identify areas where try-except blocks are nested excessively, leading to potential issues with code readability and maintainability.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+3. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Choose Pylint as the automated tool for fixing excessive nesting of try-except blocks.
+2. Install Pylint using pip:
+   ```
+pip install pylint
+```
+3. Run Pylint on your Python project to identify the issues:
+   ```
+pylint your_project_directory
+```
+4. Pylint will provide a report highlighting the areas with excessive nesting of try-except blocks.
+5. To automatically fix the issues, you can use the `autopep8` tool along with Pylint:
+   ```
+pylint --disable=all --enable=fixme your_project_directory | autopep8 --in-place --aggressive --aggressive -
+```
+6. This command will disable all other Pylint checks and enable only the fixme check, then use autopep8 to automatically fix the identified issues.
+7. Make sure to review the changes made by autopep8 to ensure they align with your project's requirements.
  --- 
  --- 
- --- 
-# Rule 10. Use custom exception classes for domain specific errors
-
+---
+# Rule 10
+# Use custom exception classes for domain specific errors
+---
 | Frequent score for this rule: 65.0 | [^Top](#error-handling) 
 
-## Explanation
->Error Handling: Use custom exception classes for domain specific errors to provide more context and clarity when handling exceptions related to specific parts of the application.
+---
+### Explanation:
+>Use custom exception classes for domain specific errors to provide more context and information about the error, making it easier to handle and debug.
 
-## Why do we need this rule?
->Using custom exception classes for domain specific errors helps in improving code readability, maintainability, and debugging by providing specific information about the error and its context.
+### Why use this rule:
+>Using custom exception classes improves code readability, maintainability, and helps in distinguishing between different types of errors within the application domain.
 
-## If not apply this rule, what will happen?
-| In the negative Python code examples, a generic Exception class is used to raise an error without providing any specific context or information about the error. This can make it difficult to identify the root cause of the error and handle it effectively.
+### Without this rule:
+>Using generic Exception class for all errors can lead to ambiguity and lack of specific information about the error, making it harder to identify and handle the issue.
 ```python
-raise Exception('An error occurred')
+try:
+    # code block
+except:
+    print('An error occurred')
 ```
-
-## If apply this rule?
-| In the positive Python code examples, custom exception classes like CustomError and SpecificError are defined to handle domain specific errors. By raising SpecificError with a specific error message, developers can easily identify and handle errors related to a specific part of the application.
+### Good use of this rule:
+>Custom exception classes like CustomError and InvalidInputError can be used to raise specific errors related to the domain, providing clear information about the type of error that occurred.
 ```python
 class CustomError(Exception):
     pass
 
-class SpecificError(CustomError):
+class InvalidInputError(CustomError):
     pass
-
-raise SpecificError('An error occurred in a specific part of the application')
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling and ensure the use of custom exception classes for domain specific errors in a Python project, you can utilize static code analysis tools like Pylint or Flake8. These tools can analyze the codebase and identify instances where generic exceptions are being used instead of custom exception classes for domain specific errors.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install Pylint or Flake8 using pip
+2. Run the tool on your Python project to identify instances of generic exceptions
+3. Manually refactor the code to replace generic exceptions with custom exception classes for domain specific errors
  --- 
  --- 
- --- 
-# Rule 11. Document the exceptions that a function can raise
-
+---
+# Rule 11
+# Document the exceptions that a function can raise
+---
 | Frequent score for this rule: 60.0 | [^Top](#error-handling) 
 
-## Explanation
+---
+### Explanation:
 >Error Handling involves documenting the exceptions that a function can raise to provide clarity on potential failures. This helps developers understand the possible error scenarios and handle them appropriately.
 
-## Why do we need this rule?
->Documenting exceptions enhances code readability, maintainability, and helps in debugging by providing insights into potential failure points.
+### Why use this rule:
+>Documenting exceptions enhances code readability, maintainability, and helps in effective debugging. It also guides developers on how to handle specific errors and prevents unexpected crashes or bugs in the codebase.
 
-## If not apply this rule, what will happen?
-| The function 'read_file' does not handle the 'FileNotFoundError' exception that may occur if the file does not exist, resulting in a runtime error without proper error handling.
+### Without this rule:
+>This code does not handle the 'ZeroDivisionError' exception, leading to a potential runtime error if 'num2' is 0. Lack of exception documentation makes it harder for developers to anticipate and handle errors effectively.
 ```python
-def read_file(file_path: str) -> str:
-    file = open(file_path, 'r')
-    content = file.read()
-    return content
+def divide_numbers(num1, num2):
+    result = num1 / num2
+    return result
 ```
-
-## If apply this rule?
-| In this example, the function 'divide_numbers' documents the possible exception 'ZeroDivisionError' and raises a 'ValueError' with a descriptive message.
+### Good use of this rule:
+>In this example, the function 'divide_numbers' documents the possible exception 'ZeroDivisionError' and raises a 'ValueError' with a descriptive message. This helps in clearly defining the error scenario and guiding the caller on how to handle it.
 ```python
-def divide_numbers(num1: int, num2: int) -> float:
+def divide_numbers(num1, num2):
     try:
         result = num1 / num2
         return result
     except ZeroDivisionError:
         raise ValueError('Cannot divide by zero')
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling and document the exceptions that a function can raise in a Python project, you can use static code analysis tools that can analyze the codebase and identify potential exceptions that a function may raise. These tools can help in documenting the exceptions raised by a function and ensure proper error handling practices are followed throughout the project.
+### Automated tools can be used to fix the code for applying this rule:
+Static code analysis tools like Pylint, Flake8, and Bandit can be used to automatically check and fix error handling in a Python project. These tools can identify missing exception documentation and suggest fixes to ensure proper error handling practices are followed.
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install a static code analysis tool like Pylint.
+2. Run the tool on your Python project to identify error handling issues.
+3. Review the output of the tool to see suggestions for fixing error handling.
+4. Make the necessary changes to document the exceptions raised by functions.
+5. Re-run the tool to ensure the error handling issues have been fixed.
  --- 
  --- 
- --- 
-# Rule 12. Use logging module for exception handling
-
+---
+# Rule 12
+# Use logging module for exception handling
+---
 | Frequent score for this rule: 60.0 | [^Top](#error-handling) 
 
-## Explanation
+---
+### Explanation:
 >Error Handling: Use logging module for exception handling to log errors and provide valuable information for debugging and troubleshooting.
 
-## Why do we need this rule?
->Using the logging module for exception handling ensures that errors are properly logged and can be easily tracked and analyzed. This helps in identifying and fixing issues quickly, improving the overall reliability and maintainability of the codebase.
+### Why use this rule:
+>Using the logging module for exception handling ensures that errors are properly logged and can be easily tracked and analyzed. It helps in identifying issues, understanding the flow of the program, and improving the overall reliability of the codebase.
 
-## If not apply this rule, what will happen?
-| In this example, the error message is printed to the console instead of using the logging module, which makes it harder to track and analyze errors.
+### Without this rule:
+>In this example, the exception is caught but only printed to the console without using the logging module. This can make it harder to track and debug errors.
 ```python
 try:
     # Some code that may raise an exception
 except Exception as e:
     print(f'An error occurred: {e}')
 ```
-
-## If apply this rule?
-| In this example, the logging module is used to log the error message along with the exception details, providing valuable information for debugging.
+### Good use of this rule:
+>In this example, the logging module is used to log any exceptions that occur, providing detailed information about the error for debugging purposes.
 ```python
 try:
     # Some code that may raise an exception
 except Exception as e:
     logging.error(f'An error occurred: {e}')
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check and fix Error Handling -> Use logging module for exception handling in the application project, you can use static code analysis tools to identify instances where exception handling is not done using the logging module. These tools can scan the codebase and flag areas where direct exception handling is used instead of logging the exceptions.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+3. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install Pylint
+2. Run Pylint on the Python project
+3. Use Pylint's autofix feature to automatically fix the code based on the rule
+4. Review the changes made by Pylint's autofix feature and ensure they align with the logging module exception handling approach
  --- 
  --- 
- --- 
-# Rule 13. Ensure that exception messages are user friendly and actionable
-
+---
+# Rule 13
+# Ensure that exception messages are user friendly and actionable
+---
 | Frequent score for this rule: 55.0 | [^Top](#error-handling) 
 
-## Explanation
->Error handling should provide user-friendly and actionable exception messages to help users understand and resolve issues effectively.
+---
+### Explanation:
+>Error handling should ensure that exception messages are user-friendly and actionable, providing clear information to users about what went wrong and how to resolve the issue.
 
-## Why do we need this rule?
->User-friendly exception messages improve user experience, reduce confusion, and enable users to troubleshoot and resolve errors efficiently.
+### Why use this rule:
+>User-friendly and actionable exception messages help users understand errors quickly, leading to faster issue resolution and improved user experience.
 
-## If not apply this rule, what will happen?
-| In this example, the exception message 'Error code 500' is vague and unhelpful, providing no actionable information for the user.
+### Without this rule:
+>In this example, the original exception is re-raised without providing any additional context or information, making it difficult for users to understand the error.
 ```python
 try:
     # code that may raise an exception
-except Exception as e:
-    raise Exception('Error code 500')
+except SomeException as e:
+    raise e
 ```
-
-## If apply this rule?
-| In this example, the exception message is clear, informative, and guides the user on what action to take.
+### Good use of this rule:
+>In this example, a custom exception is raised with a clear and actionable message, providing users with information on what went wrong and how to address the issue.
 ```python
 try:
     # code that may raise an exception
-except Exception as e:
-    raise Exception('An error occurred: Please check your input and try again.')
+except SomeException as e:
+    raise CustomException('An error occurred. Please check your input.') from e
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling and ensure that exception messages are user-friendly and actionable in a Python project, you can use static code analysis tools that can analyze the codebase for exception handling practices. These tools can identify instances where exception messages may not be user-friendly or actionable and provide suggestions for improvement.
+### Automated tools can be used to fix the code for applying this rule:
+1. Pylint
+2. Flake8
+3. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install the chosen static code analysis tool (e.g., Pylint).
+2. Run the tool on your Python project to identify areas where exception messages can be improved.
+3. Review the suggestions provided by the tool and make necessary changes to the exception messages in your code.
+4. Re-run the tool to ensure that the exception messages are now user-friendly and actionable.
  --- 
  --- 
- --- 
-# Rule 14. Use retry logic for transient errors
-
+---
+# Rule 14
+# Use retry logic for transient errors
+---
 | Frequent score for this rule: 50.0 | [^Top](#error-handling) 
 
-## Explanation
->Error Handling: Use retry logic for transient errors to automatically retry failed operations in case of temporary failures, such as network issues or service disruptions.
+---
+### Explanation:
+>Error Handling: Use retry logic for transient errors to automatically retry failed operations in case of temporary issues, such as network timeouts or service unavailability.
 
-## Why do we need this rule?
->Retry logic helps improve the reliability and resilience of the system by automatically handling transient errors without manual intervention, reducing the impact of temporary failures on the overall system performance and user experience.
+### Why use this rule:
+>Retry logic for transient errors helps improve the reliability and resilience of the application by handling temporary failures gracefully and reducing the impact of intermittent issues on the user experience.
 
-## If not apply this rule, what will happen?
-| In this example, the function fetch_data() does not implement retry logic for transient errors, leading to potential data retrieval failures if a ConnectionError occurs.
+### Without this rule:
+>This code snippet does not handle transient errors and does not retry failed operations, which can lead to unexpected failures and poor user experience.
 ```python
 import requests
-from requests.exceptions import ConnectionError
 
 def fetch_data(url):
-    try:
-        response = requests.get(url)
-        return response.json()
-    except ConnectionError:
-        return None
+    response = requests.get(url)
+    return response.json()
 ```
-
-## If apply this rule?
-| Retry logic is implemented in the fetch_data() function to handle transient errors by retrying the request multiple times before giving up, ensuring a higher success rate in fetching data from the URL.
+### Good use of this rule:
+>This code snippet demonstrates how to implement retry logic for transient errors when making HTTP requests using the requests library in Python.
 ```python
-import requests
-from requests.exceptions import ConnectionError
 import time
+import requests
 
 def fetch_data(url):
-    retries = 3
-    for _ in range(retries):
+    max_retries = 3
+    for i in range(max_retries):
         try:
             response = requests.get(url)
             return response.json()
-        except ConnectionError:
-            time.sleep(1)
-    return None
+        except requests.exceptions.RequestException as e:
+            if i < max_retries - 1:
+                time.sleep(1)
+            else:
+                raise e
 ```
-
+### Insights for automatically checking and fixing the code by this rule:
+To automatically check Error Handling and use retry logic for transient errors in a Python project, you can analyze the codebase for error handling patterns and identify areas where retry logic can be implemented for handling transient errors. This can be done by scanning the code for exception handling blocks and determining if retry logic can be applied to handle transient errors effectively.
+### Automated tools can be used to fix the code for applying this rule:
+1. Flake8
+2. PyLint
+3. Black
+4. Bandit
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+1. Install Flake8 using pip: pip install flake8
+2. Run Flake8 on your Python project to identify areas where retry logic for transient errors can be implemented.
+3. Modify the code to include retry logic in the identified error handling blocks.
+4. Test the updated code to ensure that retry logic is working as expected.
+5. Commit the changes to your version control system.
  --- 
  --- 
- --- 
-# Rule 15. Use assertions for checking internal invariants
-
+---
+# Rule 15
+# Use assertions for checking internal invariants
+---
 | Frequent score for this rule: 50.0 | [^Top](#error-handling) 
 
-## Explanation
+---
+### Explanation:
 >Use assertions for checking internal invariants to ensure that the program state is as expected at critical points in the code.
 
-## Why do we need this rule?
->Using assertions helps catch bugs early in development and ensures that the program behaves as intended by validating assumptions about the program state.
+### Why use this rule:
+>Using assertions helps catch bugs early in the development process by identifying unexpected conditions or states that could lead to errors or incorrect behavior.
 
-## If not apply this rule, what will happen?
-| This code uses manual error checking instead of assertions, making the code less readable and potentially missing critical internal state checks.
+### Without this rule:
+>This code uses a print statement instead of an assertion to check the internal invariant, which can lead to overlooking critical conditions and not halting the program execution when needed.
 ```python
 if x <= 0:
-    raise ValueError('x should be greater than 0')
+    print('x is not greater than 0')
 ```
-
-## If apply this rule?
-| This assertion checks if the variable x is greater than 0 and raises an AssertionError if it is not, helping to maintain the internal invariant.
+### Good use of this rule:
+>This assertion checks if the variable x is greater than 0, ensuring that the program state is valid at that point.
 ```python
 assert x > 0, 'x should be greater than 0'
 ```
+### Insights for automatically checking and fixing the code by this rule:
+Using assertions for checking internal invariants in the application project can help catch unexpected conditions during development and testing. By automatically checking for these internal invariants, developers can ensure the code behaves as expected and prevent potential bugs and errors.
+### Automated tools can be used to fix the code for applying this rule:
+Automated tools like Flake8, PyLint, and Black can be used to fix the code by enforcing the use of assertions for checking internal invariants in Python projects.
+### Steps to implement the automatic fixing of the code by this rule in very detail:
+To implement automatic fixing using Flake8, follow these steps:
+1. Install Flake8 using pip: `pip install flake8`
+2. Create a Flake8 configuration file (flake8.ini) with the following content:
 
+```
+[flake8]
+ignore =
+    # Ignore E722: do not use bare 'except'
+    E722
+max-line-length = 88
+```
+
+3. Run Flake8 on your Python project to identify places where assertions for checking internal invariants are missing.
+4. Manually add assertions where necessary based on the Flake8 output.
+5. Re-run Flake8 to ensure all internal invariants are checked using assertions.
  --- 
  --- 
